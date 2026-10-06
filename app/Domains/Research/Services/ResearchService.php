@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Domains\Research\Services;
+
+use App\Domains\Research\Models\ResearchProject;
+
+class ResearchService
+{
+    public function pageData(): array
+    {
+        $items = ResearchProject::query()
+            ->where("is_published", true)
+            ->orderByDesc("year")
+            ->orderBy("sort_order")
+            ->get()
+            ->map(
+                fn(ResearchProject $project): array => [
+                    "id" => (string) $project->getKey(),
+                    "year" => (string) $project->year,
+                    "image" => $project->image_path,
+                    "title" => $project->title,
+                    "description" => $project->summary,
+                    "meta" => $project->funding_source,
+                    "slug" => $project->slug,
+                ],
+            )
+            ->all();
+
+        return [
+            "eyebrow" => "DAFTAR PORTOFOLIO",
+            "title" => "Portofolio Riset",
+            "description" =>
+                "Hibah aktif, makalah fundamental, dan rekayasa sistem terapan berskala global. Telusuri lebih dari satu dekade inovasi komputasi terdesentralisasi.",
+            "allLabel" => "Semua Riset",
+            "previousLabel" => "Riset Sebelumnya",
+            "filterLabel" => "Filter berdasarkan Tahun:",
+            "resultLabel" => "Menampilkan " . count($items) . " Proyek Utama",
+            "landing" => [
+                "eyebrow" => "PORTOFOLIO RISET",
+                "title" => "Bidang Aktif & Proyek Utama",
+                "ctaLabel" => "Jelajahi Riset",
+                "featuredCount" => 3,
+            ],
+            "assets" => [
+                "chevron" => "/assets/research/b1399.svg",
+                "arrow" => "/assets/research/7c1ef.svg",
+                "logo" => "/assets/research/325dd.svg",
+                "eyebrowIcon" => "/assets/research/4a311.svg",
+                "divider" => "/assets/research/73368.svg",
+            ],
+            "items" => $items,
+        ];
+    }
+}

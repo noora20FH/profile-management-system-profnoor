@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Domains\CMS\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Setting extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ["key", "value", "group", "is_public"];
+
+    protected function casts(): array
+    {
+        return [
+            "value" => "array",
+            "is_public" => "boolean",
+        ];
+    }
+}

@@ -1,11 +1,23 @@
 import { usePage } from "@inertiajs/react"
+import type { InertiaPageProps, ListingPageData } from "@/types/common"
 
-import { researchMock } from "@/data/mocks"
-import { getResearch } from "@/Features/Research/services/research.service"
-import type { InertiaPageProps } from "@/types/common"
 
-export default function useResearch() {
-  return (
-    usePage<InertiaPageProps>().props.research ?? getResearch() ?? researchMock
-  )
+export default function useResearch(): ListingPageData {
+
+    const props =
+        usePage<InertiaPageProps>().props
+
+
+    const page =
+        props.page ?? props.research
+
+
+    if (!page) {
+        throw new Error(
+            "Research data is missing from Inertia props"
+        )
+    }
+
+
+    return page
 }

@@ -1,13 +1,13 @@
 import { usePage } from "@inertiajs/react"
 
 import Navbar from "@/Layouts/Navbar"
-import { profileMetrics } from "@/data/mocks"
 import type { InertiaPageProps } from "@/types/common"
 import { assetPath } from "@/utils/asset"
 
 export default function Hero() {
   const metrics =
-    usePage<InertiaPageProps>().props.profileMetrics ?? profileMetrics
+ usePage<InertiaPageProps>()
+ .props.profileMetrics ?? []
 
   return (
     <>

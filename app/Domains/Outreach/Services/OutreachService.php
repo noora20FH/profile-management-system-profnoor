@@ -15,16 +15,17 @@ class OutreachService
             ->get()
             ->map(
                 fn(OutreachProgram $program): array => [
-                    "id" => (string) $program->getKey(),
-                    "year" => (string) $program->year,
+                    "id" => (string)$program->id,
+                    "year" => (string)$program->year,
                     "image" => $program->image_path,
                     "category" => $program->category,
                     "title" => $program->title,
                     "description" => $program->description,
                     "metrics" => [
                         $program->primary_metric,
-                        $program->secondary_metric,
+                        $program->secondary_metric
                     ],
+                    "impact_url" => $program->impact_url,
                     "slug" => $program->slug,
                 ],
             )
@@ -34,12 +35,12 @@ class OutreachService
             "eyebrow" => "DAMPAK SOSIAL",
             "title" => "Pengabdian Masyarakat",
             "description" =>
-                "Menjembatani arsitektur teknis sistem terdistribusi dengan pemberdayaan masyarakat regional. Menggali penerapan praktis jaringan komputasi untuk menjamin kesetaraan ekologis, pertanian, dan pendidikan.",
+            "Menjembatani arsitektur teknis sistem terdistribusi dengan pemberdayaan masyarakat regional. Menggali penerapan praktis jaringan komputasi untuk menjamin kesetaraan ekologis, pertanian, dan pendidikan.",
             "allLabel" => "Semua Program",
             "previousLabel" => "Pengabdian Sebelumnya",
             "filterLabel" => "Filter berdasarkan Tahun:",
             "resultLabel" =>
-                "Menampilkan " . count($items) . " Program Pengabdian",
+            "Menampilkan " . count($items) . " Program Pengabdian",
             "landing" => [
                 "eyebrow" => "DAMPAK SOSIAL",
                 "title" => "Inisiatif Pengabdian Masyarakat",

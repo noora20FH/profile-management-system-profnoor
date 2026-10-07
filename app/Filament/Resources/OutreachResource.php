@@ -35,6 +35,10 @@ class OutreachResource extends Resource
             TextInput::make("image_path")->maxLength(255),
             TextInput::make("primary_metric")->maxLength(255),
             TextInput::make("secondary_metric")->maxLength(255),
+            TextInput::make('impact_url')
+                ->label('Impact Documentation URL')
+                ->url()
+                ->nullable(),
             Textarea::make("description")
                 ->required()
                 ->rows(8)

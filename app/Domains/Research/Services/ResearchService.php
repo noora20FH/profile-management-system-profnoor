@@ -15,12 +15,13 @@ class ResearchService
             ->get()
             ->map(
                 fn(ResearchProject $project): array => [
-                    "id" => (string) $project->getKey(),
+                    "id" => (string) $project->id,
                     "year" => (string) $project->year,
                     "image" => $project->image_path,
-                    "title" => $project->title,
+                    "title" =>$project->title,
                     "description" => $project->summary,
                     "meta" => $project->funding_source,
+                    "publication_url" => $project->publication_url,
                     "slug" => $project->slug,
                 ],
             )
@@ -30,7 +31,7 @@ class ResearchService
             "eyebrow" => "DAFTAR PORTOFOLIO",
             "title" => "Portofolio Riset",
             "description" =>
-                "Hibah aktif, makalah fundamental, dan rekayasa sistem terapan berskala global. Telusuri lebih dari satu dekade inovasi komputasi terdesentralisasi.",
+            "Hibah aktif, makalah fundamental, dan rekayasa sistem terapan berskala global. Telusuri lebih dari satu dekade inovasi komputasi terdesentralisasi.",
             "allLabel" => "Semua Riset",
             "previousLabel" => "Riset Sebelumnya",
             "filterLabel" => "Filter berdasarkan Tahun:",

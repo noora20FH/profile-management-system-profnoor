@@ -1,76 +1,50 @@
 import Card from "./Card";
 
-import { listingPages } from "@/data/mocks";
-import type { ListingItem, ListingType } from "@/types/common";
+import type { ListingItem, ListingType, ListingPageData } from "@/types/common";
 
-type ListingCardProps = {
+type Props = {
   item: ListingItem;
+
   type: ListingType;
+
+  config: ListingPageData;
 };
 
-export default function ListingCard({ item, type }: ListingCardProps) {
-  const config = listingPages[type];
+export default function ListingCard({ item, type, config }: Props) {
+  const href =
+    type === "research"
+      ? item.publication_url
+      : type === "courses"
+        ? item.syllabus_url
+        : item.impact_url;
+
+  const actionLabel =
+    type === "research"
+      ? "Baca Publikasi Lengkap"
+      : type === "courses"
+        ? "Lihat Detail & Silabus"
+        : "Pelajari Lebih Lanjut tentang Dampak";
 
   return (
     <Card className="listing-card">
       {item.image ? (
-        <img className="listing-card-image" src={item.image} alt="" />
+        <img className="listing-card-image" src={item.image} />
       ) : (
         <div className="listing-card-image listing-card-image--empty" />
       )}
+
       <div className="listing-card-body">
-        <div className="listing-card-meta">
-          <span>
-            {item.code ??
-              (item.year === "previous" ? config.previousLabel : item.year)}
-          </span>
-          <small>
-            {item.term ??
-              (type === "outreach" ? "DAMPAK AKTIF" : "Referensi Makalah")}
-          </small>
-        </div>
         <h2>{item.title}</h2>
+
         <p>{item.description}</p>
-        {type === "research" && (
-          <>
-            <div className="asset-divider">
-              <img src={config.assets.divider} alt="" />
-            </div>
-            <small className="listing-card-source">{item.meta}</small>
-          </>
+
+        {href && (
+          <a href={href} target="_blank" rel="noopener noreferrer">
+            {actionLabel}
+
+            <img src={config.assets.arrow} />
+          </a>
         )}
-        {type === "outreach" && item.metrics && (
-          <div className="impact-metrics">
-            <span>
-              <img src={config.assets.primaryMetricIcon} alt="" />
-              {item.metrics[0]}
-            </span>
-            <span>
-              <img src={config.assets.secondaryMetricIcon} alt="" />
-              {item.metrics[1]}
-            </span>
-          </div>
-        )}
-        <a
-          href={
-            type === "courses"
-              ? (item.syllabus_url ?? "#")
-              : type === "research"
-                ? (item.url ?? "#")
-                : "#"
-          }
-          target={
-            type === "courses" || type === "research" ? "_blank" : undefined
-          }
-          rel="noopener noreferrer"
-        >
-          {type === "research"
-            ? "Baca Publikasi Lengkap"
-            : type === "courses"
-              ? "Lihat Detail & Silabus"
-              : "Pelajari Lebih Lanjut tentang Dampak"}
-          <img src={config.assets.arrow} alt="" />
-        </a>
       </div>
     </Card>
   );

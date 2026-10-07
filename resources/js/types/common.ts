@@ -13,8 +13,11 @@ export type ListingItem = {
   code?: string;
   category?: string;
   metrics?: [string, string];
-  syllabus_url?: string | null;
+    // External links
   url?: string | null;
+  publication_url?:string | null;
+  syllabus_url?:string | null;
+  impact_url?:string | null;
 };
 
 export type ListingPageData = {

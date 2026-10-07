@@ -1,10 +1,11 @@
-import type { OutreachProgram } from "../types"
+import type { OutreachProgram } from "../types";
 
 type OutreachCardProps = {
-  program: OutreachProgram
-}
+  program: OutreachProgram;
+};
 
 export default function OutreachCard({ program }: OutreachCardProps) {
+  console.log("OUTREACH DATA:", program);
   return (
     <article className="outreach-card">
       <img src={program.image} alt="" />
@@ -12,8 +13,11 @@ export default function OutreachCard({ program }: OutreachCardProps) {
         <small>{program.category}</small>
         <h3>{program.title}</h3>
         <p>{program.description}</p>
-        <a href="/pengabdian">Pelajari Lebih Lanjut Dampak Tim Kami</a>
+        <a href={program.impact_url} target="_blank" rel="noopener noreferrer">
+          Pelajari Lebih Lanjut tentang Dampak
+        </a>
       </div>
+      
     </article>
-  )
+  );
 }

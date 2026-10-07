@@ -20,6 +20,7 @@ class OutreachProgram extends Model
         "image_path",
         "primary_metric",
         "secondary_metric",
+        "impact_url",
         "is_featured",
         "is_published",
         "sort_order",

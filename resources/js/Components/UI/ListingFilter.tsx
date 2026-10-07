@@ -3,8 +3,7 @@ import {
   type ListingFilterValue,
   type ListingType,
 } from "@/types/common"
-import { listingPages } from "@/data/mocks"
-
+import useListingPage from "@/hooks/useListingPage";
 type ListingFilterProps = {
   type: ListingType
   value: ListingFilterValue
@@ -16,7 +15,7 @@ export default function ListingFilter({
   value,
   onChange,
 }: ListingFilterProps) {
-  const config = listingPages[type]
+  const config = useListingPage(type)
   const labelFor = (year: ListingFilterValue) => {
     if (year === "all") return config.allLabel
     if (year === "previous") return config.previousLabel

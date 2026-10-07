@@ -1,5 +1,5 @@
 export { default as ResearchCard } from "./components/ResearchCard"
 export { default as ResearchList } from "./components/ResearchList"
 export { default as ResearchSection } from "./components/ResearchSection"
-export { getResearch } from "./services/research.service"
+
 export type { ResearchPageData, ResearchProject } from "./types"

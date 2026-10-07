@@ -13,10 +13,12 @@ type FeaturePageLayoutProps = {
   type: ListingType;
 };
 
+
 export default function FeaturePageLayout({ type }: FeaturePageLayoutProps) {
   const [filter, setFilter] = useState<ListingFilterValue>("all");
   const config = useListingPage(type);
   const previousItems = config.items.filter((item) => item.year === "previous");
+
   const filteredItems = config.items.filter((item) => {
     if (filter === "all") {
       return true;
@@ -48,7 +50,7 @@ export default function FeaturePageLayout({ type }: FeaturePageLayoutProps) {
         </section>
         <section className="listing-grid section-shell" aria-live="polite">
           {filteredItems.map((item) => (
-            <ListingCard item={item} key={item.id} type={type} />
+            <ListingCard item={item} key={item.id} type={type} config={config} />
           ))}
         </section>
       </main>

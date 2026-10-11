@@ -1,4 +1,4 @@
-export type ListingType = "research" | "courses" | "outreach";
+export type ListingType = "research" | "courses" | "outreach" | "publication";
 
 export type ListingYear = string;
 
@@ -45,6 +45,7 @@ export type ListingPageData = {
     primaryMetricIcon?: string;
     secondaryMetricIcon?: string;
   };
+  
 };
 
 export type InertiaPageProps = {
@@ -57,6 +58,7 @@ export type InertiaPageProps = {
     detail: string;
   }>;
   research?: ListingPageData;
+  publication?: ListingPageData;
   [key: string]: unknown;
 };
 

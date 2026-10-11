@@ -5,6 +5,7 @@ use App\Domains\Outreach\Controllers\OutreachController;
 use App\Domains\Profile\Controllers\ProfileController;
 use App\Domains\Research\Controllers\ResearchController;
 use Illuminate\Support\Facades\Route;
+use App\Domains\Publication\Controllers\PublicationController;
 
 Route::get("/", ProfileController::class)->name("home");
 Route::get("/riset", [ResearchController::class, "index"])->name(
@@ -19,4 +20,7 @@ Route::get("/mata-kuliah", [CourseController::class, "index"])->name(
 );
 Route::get("/pengabdian", [OutreachController::class, "index"])->name(
     "outreach.index",
+);
+Route::get("/publikasi",[PublicationController::class,"index"])->name(
+    "publication.index"
 );

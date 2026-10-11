@@ -2,15 +2,32 @@
 
 namespace App\Domains\Publication\Controllers;
 
-use App\Domains\Publication\Resources\PublicationResource;
+
+use Inertia\Inertia;
+
 use App\Domains\Publication\Services\PublicationService;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use App\Domains\Publication\Models\Publication;
+
 
 class PublicationController
 {
-    public function index(
-        PublicationService $publications,
-    ): AnonymousResourceCollection {
-        return PublicationResource::collection($publications->published());
+    protected PublicationService $publicationService;
+
+    public function __construct(PublicationService $publicationService)
+    {
+        $this->publicationService = $publicationService;
     }
+
+    public function index()
+    {
+        return Inertia::render(
+            'PublicationPage',
+            [
+                'publication' =>
+                    $this->publicationService->pageData()
+            ]
+        );
+    }
+
+
 }

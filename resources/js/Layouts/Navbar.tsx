@@ -1,13 +1,13 @@
-import { useState } from "react"
+import { useState } from "react";
 
-import type { ListingType } from "@/types/common"
+import type { ListingType } from "@/types/common";
 
 type NavbarProps = {
-  active?: ListingType
-}
+  active?: ListingType;
+};
 
 export default function Navbar({ active }: NavbarProps) {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className={`site-header${menuOpen ? " menu-open" : ""}`}>
@@ -24,6 +24,12 @@ export default function Navbar({ active }: NavbarProps) {
         </a>
         <a className={active === "outreach" ? "active" : ""} href="/pengabdian">
           Pengabdian
+        </a>
+        <a
+          href="/publikasi"
+          className={active === "publication" ? "active" : ""}
+        >
+          Publikasi
         </a>
       </nav>
       <button
@@ -67,7 +73,13 @@ export default function Navbar({ active }: NavbarProps) {
         >
           Pengabdian
         </a>
+        <a
+          href="/publikasi"
+          className={active === "publication" ? "active" : ""}
+        >
+          Publikasi
+        </a>
       </nav>
     </header>
-  )
+  );
 }

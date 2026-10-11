@@ -6,6 +6,7 @@ use App\Domains\Course\Services\CourseService;
 use App\Domains\Outreach\Services\OutreachService;
 use App\Domains\Profile\Services\ProfileService;
 use App\Domains\Research\Services\ResearchService;
+use App\Domains\Publication\Services\PublicationService;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -16,6 +17,7 @@ class ProfileController
         ResearchService $research,
         CourseService $courses,
         OutreachService $outreach,
+        PublicationService $publication,
     ): Response {
         return Inertia::render("HomePage", [
             "profile" => $profiles->current(),
@@ -23,6 +25,7 @@ class ProfileController
             "research" => $research->pageData(),
             "courses" => $courses->pageData(),
             "outreach" => $outreach->pageData(),
+            "publication" => $publication->pageData(),
         ]);
     }
 }

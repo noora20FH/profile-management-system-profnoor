@@ -32,8 +32,6 @@ class Publication extends Model
 
         "publisher",
 
-        "journal",
-
         "published_at",
 
         "doi",

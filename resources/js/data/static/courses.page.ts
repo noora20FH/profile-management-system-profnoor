@@ -8,7 +8,7 @@ export const coursesPageConfig = {
 
  eyebrow:"PENAWARAN AKADEMIK",
 
- title:"Mata Kuliah",
+ title:"Pengajaran",
 
  description:
  "Daftar mata kuliah akademik yang sedang tersedia.",

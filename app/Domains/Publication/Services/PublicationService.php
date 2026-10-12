@@ -26,36 +26,62 @@ class PublicationService
             ->get();
     }
 
-public function items()
-{
-    return $this->published()
-        ->map(function ($item) {
+    public function items()
+    {
+        return $this->published()
+            ->map(function ($item) {
 
-            return [
-                "id" => $item->id,
+                return [
 
-                "year" =>
-                    optional($item->published_at)
-                    ->format("Y"),
+                    "id" => $item->id,
 
-                "title" =>
+                    "year" =>
+                    $item->published_at
+                        ? $item->published_at->format("Y")
+                        : null,
+
+
+                    "title" =>
                     $item->title,
 
-                "description" =>
+
+                    "abstract" =>
                     $item->abstract,
 
-                "url" =>
+
+                    "type" =>
+                    $item->type,
+
+
+                    "type_label" =>
+                    $item->type_label,
+
+
+                    "published_at" =>
+                    $item->published_at,
+
+
+                    "doi" =>
+                    $item->doi,
+
+
+                    "url" =>
                     $item->url,
 
-                "journal" =>
-                    $item->journal,
 
-                "doi" =>
-                    $item->doi,
-            ];
+                    "research_project" => $item->researchProject
+                        ? [
+                            "id" =>
+                            $item->researchProject->id,
 
-        });
-}
+                            "title" =>
+                            $item->researchProject->title,
+                        ]
+                        : null,
+
+                ];
+            });
+    }
 
     public function findBySlug(
         string $slug

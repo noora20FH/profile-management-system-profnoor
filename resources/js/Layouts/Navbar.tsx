@@ -16,12 +16,13 @@ export default function Navbar({ active }: NavbarProps) {
       </a>
       <nav className="primary-nav" aria-label="Navigasi utama">
         <a href="/#biografi">Biografi</a>
+        <a className={active === "courses" ? "active" : ""} href="/mata-kuliah">
+          Pengajaran
+        </a>
         <a className={active === "research" ? "active" : ""} href="/riset">
           Riset
         </a>
-        <a className={active === "courses" ? "active" : ""} href="/mata-kuliah">
-          Mata Kuliah
-        </a>
+
         <a className={active === "outreach" ? "active" : ""} href="/pengabdian">
           Pengabdian
         </a>
@@ -53,19 +54,20 @@ export default function Navbar({ active }: NavbarProps) {
           Biografi
         </a>
         <a
+          className={active === "courses" ? "active" : ""}
+          href="/mata-kuliah"
+          onClick={() => setMenuOpen(false)}
+        >
+          Pengajaran
+        </a>
+        <a
           className={active === "research" ? "active" : ""}
           href="/riset"
           onClick={() => setMenuOpen(false)}
         >
           Riset
         </a>
-        <a
-          className={active === "courses" ? "active" : ""}
-          href="/mata-kuliah"
-          onClick={() => setMenuOpen(false)}
-        >
-          Mata Kuliah
-        </a>
+        
         <a
           className={active === "outreach" ? "active" : ""}
           href="/pengabdian"

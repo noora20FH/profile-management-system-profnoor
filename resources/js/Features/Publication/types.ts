@@ -1,72 +1,40 @@
 export type PublicationType =
-    | "book"
-    | "journal"
-    | "proceeding"
-    | "patent"
-    | "prototype"
-    | "ttg";
-
+  | "book"
+  | "journal"
+  | "proceeding"
+  | "patent"
+  | "prototype"
+  | "ttg";
 
 export interface ResearchProject {
+  id: number;
 
-    id: number;
-
-    title: string;
-
+  title: string;
 }
 
-
-
 export interface Publication {
+  id: number;
+  year?: string | null;
 
+  type: PublicationType;
 
-    id: number;
+  type_label: string;
 
+  title: string;
 
-    type: PublicationType;
+  slug: string;
 
+  abstract?: string | null;
 
-    type_label: string;
+  published_at?: string | null;
 
+  doi?: string | null;
 
-    title: string;
+  url?: string | null;
 
+  file_url?: string | null;
 
-    slug: string;
+  thumbnail?: string | null;
 
-
-    abstract?: string | null;
-
-
-    description?: string | null;
-
-
-    authors?: string | null;
-
-
-    publisher?: string | null;
-
-
-    journal?: string | null;
-
-
-    published_at?: string | null;
-
-
-    doi?: string | null;
-
-
-    url?: string | null;
-
-
-    file_url?: string | null;
-
-
-    thumbnail?: string | null;
-
-
-
-    research_project?: ResearchProject | null;
-
-
+  research_project?: ResearchProject | null;
 }

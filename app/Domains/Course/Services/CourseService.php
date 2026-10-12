@@ -30,7 +30,7 @@ class CourseService
 
         return [
             "eyebrow" => "PENAWARAN AKADEMIK",
-            "title" => "Mata Kuliah",
+            "title" => "Pengajaran",
             "description" =>
                 "Jelajahi mata kuliah sistem terdistribusi, pembelajaran mesin, dan komputasi modern yang tersedia pada tahun akademik berjalan.",
             "allLabel" => "Semua Mata Kuliah",

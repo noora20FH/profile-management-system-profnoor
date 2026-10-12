@@ -27,80 +27,72 @@ class StorePublicationRequest extends FormRequest
 
             "research_project_id" =>
 
-                "nullable|exists:research_projects,id",
+            "nullable|exists:research_projects,id",
 
 
 
             "type" =>
 
-                "required|
+            "required|
                 in:book,journal,proceeding,patent,prototype,ttg",
 
 
 
             "title" =>
 
-                "required|string|max:255",
+            "required|string|max:255",
 
 
 
             "slug" =>
 
-                "required|string|max:255",
+            "required|string|max:255",
 
 
 
             "abstract" =>
 
-                "nullable|string",
+            "nullable|string",
 
 
 
             "description" =>
 
-                "nullable|string",
+            "nullable|string",
 
 
 
             "authors" =>
 
-                "nullable|string",
+            "nullable|string",
 
 
 
             "publisher" =>
 
-                "nullable|string|max:255",
-
-
-
-            "journal" =>
-
-                "nullable|string|max:255",
-
-
+            "nullable|string|max:255",
 
             "published_at" =>
 
-                "nullable|date",
+            "nullable|date",
 
 
 
             "doi" =>
 
-                "nullable|string",
+            "nullable|string",
 
 
 
             "url" =>
 
-                "nullable|url",
+            "nullable|url",
 
 
 
             "file" =>
 
-                "nullable|
+            "nullable|
                 file|
                 max:10240",
 
@@ -108,13 +100,11 @@ class StorePublicationRequest extends FormRequest
 
             "thumbnail" =>
 
-                "nullable|
+            "nullable|
                 image|
                 max:2048",
 
 
         ];
-
     }
-
 }

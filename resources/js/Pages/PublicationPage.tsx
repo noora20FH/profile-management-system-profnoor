@@ -10,17 +10,7 @@ interface Props {
     items: Publication[];
   };
 }
-type PublicationListingItem = {
-  id: string;
 
-  title: string;
-
-  description: string;
-
-  year: string;
-
-  publication: Publication;
-};
 export default function PublicationPage({ publication }: Props) {
   const config: ListingPageData = {
     eyebrow: "Publication",
@@ -58,12 +48,10 @@ export default function PublicationPage({ publication }: Props) {
     })),
 
     assets: {
-      eyebrowIcon: null,
-
-      logo: null,
-
-      arrow: "",
-      chevron: "",
+      eyebrowIcon: undefined,
+      chevron: "/assets/courses/ee510.svg",
+      arrow: "/assets/courses/a93d8.svg",
+      logo: "/assets/courses/325dd.svg",
     },
   };
   const publications = publication.items;

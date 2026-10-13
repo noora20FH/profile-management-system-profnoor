@@ -8,146 +8,75 @@ interface Props {
 
 export default function PublicationCard({ publication }: Props) {
   return (
-    <article
-      className="
-bg-white
-rounded-2xl
-shadow-sm
-border
-p-6
-hover:shadow-lg
-transition
-"
-    >
+    <article className="publication-card">
+
       {publication.thumbnail && (
         <img
           src={publication.thumbnail}
           alt={publication.title}
-          className="
-w-full
-h-48
-object-cover
-rounded-xl
-mb-5
-"
         />
       )}
 
-      {/* TYPE */}
+      <div className="publication-card-body">
 
-      <div className="mb-3">
-        <span
-          className="
-px-3
-py-1
-text-xs
-rounded-full
-bg-blue-100
-text-blue-700
-"
-        >
-          {publication.type_label}
-        </span>
-      </div>
-
-      {/* TITLE */}
-
-      <h3
-        className="
-text-xl
-font-semibold
-text-gray-900
-mb-3
-"
-      >
-        {publication.title}
-      </h3>
-
-      {/* RESEARCH PROJECT */}
-
-      {publication.research_project && (
-        <div
-          className="
-mb-3
-text-sm
-text-gray-600
-"
-        >
-          <p className="font-medium">Research Project:</p>
-
-          <p>{publication.research_project.title}</p>
+        {/* TYPE */}
+        <div>
+          <span className="publication-type">
+            {publication.type_label}
+          </span>
         </div>
-      )}
 
-      {/* ABSTRACT */}
 
-      {publication.abstract && (
-        <p
-          className="
-text-gray-600
-text-sm
-line-clamp-4
-mb-5
-"
-        >
-          {publication.abstract}
-        </p>
-      )}
+        {/* TITLE */}
+        <h3>
+          {publication.title}
+        </h3>
 
-      <div
-        className="
-text-sm
-space-y-2
-mb-5
-"
-      >
+
+        {/* RESEARCH PROJECT */}
+        {publication.research_project && (
+          <div className="publication-meta">
+            <p>
+              Research Project:
+            </p>
+
+            <span>
+              {publication.research_project.title}
+            </span>
+          </div>
+        )}
+
+
+        {/* ABSTRACT */}
+        {publication.abstract && (
+          <p>
+            {publication.abstract}
+          </p>
+        )}
+
+
         {/* DATE */}
-
         {publication.published_at && (
-          <p>
-            <strong>Tanggal Publish:</strong>{" "}
-            {new Date(publication.published_at).toLocaleDateString("id-ID", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
-          </p>
+          <small>
+            {new Date(publication.published_at)
+              .toLocaleDateString("id-ID", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+          </small>
         )}
 
-        {/* DOI */}
 
-        {publication.doi && (
-          <p>
-            <strong>DOI:</strong>{" "}
-            <a
-              href={`https://doi.org/${publication.doi}`}
-              target="_blank"
-              className="
-text-blue-600
-hover:underline
-"
-            >
-              {publication.doi}
-            </a>
-          </p>
+        {/* LINK */}
+        {publication.url && (
+          <a href={publication.url} target="_blank">
+            Baca Publikasi Lengkap →
+          </a>
         )}
+
       </div>
 
-      {/* LINK */}
-
-      {publication.url && (
-        <a
-          href={publication.url}
-          target="_blank"
-          className="
-text-green-600
-hover:underline
-text-sm
-"
-        >
-          Lihat Publikasi
-        </a>
-      )}
     </article>
   );
 }

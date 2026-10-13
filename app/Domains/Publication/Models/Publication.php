@@ -26,23 +26,13 @@ class Publication extends Model
 
         "abstract",
 
-        "description",
-
-        "authors",
-
-        "publisher",
-
         "published_at",
 
         "doi",
 
         "url",
 
-        "file_path",
-
-        "file_name",
-
-        "thumbnail",
+        "video_url",
 
         "is_published",
 
@@ -75,34 +65,48 @@ class Publication extends Model
     }
 
 
+
     /**
-     * Label jenis publikasi
+     * Available publication types
+     */
+    public const TYPES = [
+
+        "artikel_jurnal" => "Artikel Jurnal",
+
+        "artikel_prosiding" => "Artikel Prosiding",
+
+        "paten" => "Paten",
+
+        "hak_cipta" => "Hak Cipta",
+
+        "prototipe" => "Prototipe",
+
+        "ttg" => "Teknologi Tepat Guna (TTG)",
+
+        "buku" => "Buku",
+
+    ];
+
+
+
+    /**
+     * Display label for publication type
      */
     public function getTypeLabelAttribute()
     {
-        return match($this->type){
+        return self::TYPES[$this->type] ?? "Publikasi";
+    }
 
-            "book" =>
-                "Buku",
 
-            "journal" =>
-                "Jurnal",
 
-            "proceeding" =>
-                "Prosiding",
-
-            "patent" =>
-                "Paten",
-
-            "prototype" =>
-                "Prototipe",
-
-            "ttg" =>
-                "Teknologi Tepat Guna",
-
-            default =>
-                "Publikasi"
-
-        };
+    /**
+     * Filter by publication type
+     */
+    public function scopeByType($query, $type)
+    {
+        return $query->when(
+            $type,
+            fn($q) => $q->where('type', $type)
+        );
     }
 }

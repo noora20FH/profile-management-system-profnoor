@@ -67,6 +67,7 @@ class PublicationService
 
                     "url" =>
                     $item->url,
+                    "video_url" => $item->video_url,
 
 
                     "research_project" => $item->researchProject

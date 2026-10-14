@@ -1,7 +1,7 @@
 export const profileMetrics = [
   {
     value: "140+",
-    label: "Publikasi Riset",
+    label: "Publikasi Penelitian",
     detail: "indeks-h: 28 | 3,200+ Sitasi",
   },
   {
@@ -14,4 +14,4 @@ export const profileMetrics = [
     label: "Mahasiswa & Peserta Bimbingan",
     detail: "Kandidat Sarjana, MSc & Ph.D.",
   },
-]
+];

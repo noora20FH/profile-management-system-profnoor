@@ -22,7 +22,7 @@ export default function ListingCard({ item, type, config }: Props) {
     type === "research"
       ? "Baca Publikasi Lengkap"
       : type === "courses"
-        ? "Lihat Detail & Silabus"
+        ? "Masuk halaman LMS"
         : "Pelajari Lebih Lanjut tentang Dampak";
 
   return (
@@ -37,6 +37,24 @@ export default function ListingCard({ item, type, config }: Props) {
         <h2>{item.title}</h2>
 
         <p>{item.description}</p>
+
+        {/* LINK VIDEO KHUSUS PENGABDIAN */}
+
+        {type === "outreach" && item.video_url && (
+          <a href={item.video_url} target="_blank" rel="noopener noreferrer">
+            Tonton Dokumentasi Program →
+          </a>
+        )}
+
+        {/* LINK VIDEO KHUSUS PENELITIAN */}
+
+        {type === "research" && item.video_url && (
+          <a href={item.video_url} target="_blank" rel="noopener noreferrer">
+            Tonton Dokumentasi Penelitian →
+          </a>
+        )}
+
+        {/* LINK UTAMA */}
 
         {href && (
           <a href={href} target="_blank" rel="noopener noreferrer">

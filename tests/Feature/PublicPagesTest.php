@@ -25,7 +25,7 @@ class PublicPagesTest extends TestCase
 
     public function test_catalog_pages_are_rendered(): void
     {
-        $this->get("/riset")
+        $this->get("/penelitian")
             ->assertOk()
             ->assertInertia(
                 fn(AssertableInertia $page) => $page

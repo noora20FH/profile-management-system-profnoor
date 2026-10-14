@@ -1,13 +1,11 @@
-import { usePage } from "@inertiajs/react"
+import { usePage } from "@inertiajs/react";
 
-import Navbar from "@/Layouts/Navbar"
-import type { InertiaPageProps } from "@/types/common"
-import { assetPath } from "@/utils/asset"
+import Navbar from "@/Layouts/Navbar";
+import type { InertiaPageProps } from "@/types/common";
+import { assetPath } from "@/utils/asset";
 
 export default function Hero() {
-  const metrics =
- usePage<InertiaPageProps>()
- .props.profileMetrics ?? []
+  const metrics = usePage<InertiaPageProps>().props.profileMetrics ?? [];
 
   return (
     <>
@@ -30,8 +28,8 @@ export default function Hero() {
               </p>
             </div>
             <div className="button-row">
-              <a className="button button--primary" href="/riset">
-                Lihat Daftar Riset
+              <a className="button button--primary" href="/Penelitian">
+                Lihat Daftar Penelitian
               </a>
               <a
                 className="button button--outline"
@@ -63,5 +61,5 @@ export default function Hero() {
         ))}
       </section>
     </>
-  )
+  );
 }

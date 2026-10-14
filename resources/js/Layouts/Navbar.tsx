@@ -19,8 +19,8 @@ export default function Navbar({ active }: NavbarProps) {
         <a className={active === "courses" ? "active" : ""} href="/mata-kuliah">
           Pengajaran
         </a>
-        <a className={active === "research" ? "active" : ""} href="/riset">
-          Riset
+        <a className={active === "research" ? "active" : ""} href="/penelitian">
+          Penelitian
         </a>
 
         <a className={active === "outreach" ? "active" : ""} href="/pengabdian">
@@ -62,10 +62,10 @@ export default function Navbar({ active }: NavbarProps) {
         </a>
         <a
           className={active === "research" ? "active" : ""}
-          href="/riset"
+          href="/penelitian"
           onClick={() => setMenuOpen(false)}
         >
-          Riset
+          Penelitian
         </a>
         
         <a

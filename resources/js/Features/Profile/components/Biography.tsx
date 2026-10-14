@@ -1,6 +1,6 @@
-import SectionHeading from "./SectionHeading"
+import SectionHeading from "./SectionHeading";
 
-import { assetPath } from "@/utils/asset"
+import { assetPath } from "@/utils/asset";
 
 const tags = [
   "Sistem Terdistribusi",
@@ -8,7 +8,7 @@ const tags = [
   "Pembelajaran Terfederasi",
   "Ketahanan Bizantium",
   "Kedaulatan Data",
-]
+];
 
 export default function Biography() {
   return (
@@ -24,9 +24,9 @@ export default function Biography() {
         <p>
           Prof. Mohammad Noor Hidayat adalah Profesor Sistem Terdistribusi
           dengan jalur tenur di Institut Teknologi Metropolitan. Selama lebih
-          dari 18 tahun, kelompok risetnya berkarya di persimpangan antara model
-          kecerdasan buatan berdimensi tinggi yang kompleks dan perangkat keras
-          jaringan terdesentralisasi.
+          dari 18 tahun, kelompok Penelitiannya berkarya di persimpangan antara
+          model kecerdasan buatan berdimensi tinggi yang kompleks dan perangkat
+          keras jaringan terdesentralisasi.
         </p>
         <p>
           Ia meraih gelar Ph.D. dalam Ilmu Komputer dari Universitas Cambridge
@@ -56,5 +56,5 @@ export default function Biography() {
         </ul>
       </div>
     </section>
-  )
+  );
 }

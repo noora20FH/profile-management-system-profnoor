@@ -1,9 +1,17 @@
+import { useState } from "react";
+
 import FeaturePageLayout from "@/Layouts/FeaturePageLayout";
 
 import PublicationList from "@/Features/Publication/components/PublicationList";
 
-import type { Publication } from "@/Features/Publication/types";
-import { ListingPageData } from "@/types/common";
+import PublicationFilter from "@/Features/Publication/components/PublicationFilter";
+
+import type {
+  Publication,
+  PublicationType,
+} from "@/Features/Publication/types";
+
+import type { ListingPageData } from "@/types/common";
 
 interface Props {
   publication: {
@@ -11,9 +19,13 @@ interface Props {
   };
 }
 
+type FilterType = "all" | PublicationType;
+
 export default function PublicationPage({ publication }: Props) {
+  const [typeFilter, setTypeFilter] = useState<FilterType>("all");
+
   const config: ListingPageData = {
-    eyebrow: "Publication",
+    eyebrow: "Publikasi",
 
     title: "Publikasi Ilmiah",
 
@@ -23,14 +35,14 @@ export default function PublicationPage({ publication }: Props) {
 
     previousLabel: "Sebelumnya",
 
-    filterLabel: "Filter",
+    filterLabel: "Filter berdasarkan Tahun:",
 
     resultLabel: "Publikasi",
 
     landing: {
-      eyebrow: "Publication",
+      eyebrow: "Publikasi",
 
-      title: "Publikasi",
+      title: "Publikasi Ilmiah",
 
       ctaLabel: "Lihat",
 
@@ -49,19 +61,36 @@ export default function PublicationPage({ publication }: Props) {
 
     assets: {
       eyebrowIcon: undefined,
+
       chevron: "/assets/courses/ee510.svg",
+
       arrow: "/assets/courses/a93d8.svg",
+
       logo: "/assets/courses/325dd.svg",
     },
   };
-  const publications = publication.items;
+
+  const filteredPublications = publication.items.filter((item) => {
+    if (typeFilter === "all") {
+      return true;
+    }
+
+    return item.type === typeFilter;
+  });
 
   return (
-    <FeaturePageLayout type="publication" config={config}>
+    <FeaturePageLayout
+      type="publication"
+      config={config}
+      publicationFilter={{
+        value: typeFilter,
+        onChange: setTypeFilter,
+      }}
+    >
       {(items) => (
         <PublicationList
-          publications={publications.filter((item) =>
-            items.some((filtered) => filtered.id === String(item.id)),
+          publications={filteredPublications.filter((publication) =>
+            items.some((filtered) => filtered.id === String(publication.id)),
           )}
         />
       )}

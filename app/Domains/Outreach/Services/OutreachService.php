@@ -26,6 +26,7 @@ class OutreachService
                         $program->secondary_metric
                     ],
                     "impact_url" => $program->impact_url,
+                    "video_url" => $program->video_url,
                     "slug" => $program->slug,
                 ],
             )

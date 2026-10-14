@@ -15,6 +15,7 @@ import type {
   ListingType,
 } from "@/types/common";
 import type { ListingPageData } from "@/types/common";
+import PublicationFilter from "@/Features/Publication/components/PublicationFilter";
 
 type FeaturePageLayoutProps = {
   type: ListingType;
@@ -22,12 +23,21 @@ type FeaturePageLayoutProps = {
   config?: ListingPageData;
 
   children?: ReactNode | ((items: ListingItem[]) => ReactNode);
+
+  publicationFilter?: {
+    value: string;
+    onChange: (value: string) => void;
+  };
 };
 
 export default function FeaturePageLayout({
   type,
+
   config: externalConfig,
+
   children,
+
+  publicationFilter,
 }: FeaturePageLayoutProps) {
   const [filter, setFilter] = useState<ListingFilterValue>("all");
 
@@ -73,6 +83,13 @@ export default function FeaturePageLayout({
           </div>
 
           <ListingFilter type={type} value={filter} onChange={setFilter} />
+
+          {publicationFilter && type === "publication" && (
+            <PublicationFilter
+              value={publicationFilter.value}
+              onChange={publicationFilter.onChange}
+            />
+          )}
         </section>
 
         <section

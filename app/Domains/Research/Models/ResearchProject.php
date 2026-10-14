@@ -22,6 +22,7 @@ class ResearchProject extends Model
         "is_featured",
         "is_published",
         "sort_order",
+        "video_url",
     ];
 
     protected function casts(): array

@@ -24,15 +24,15 @@ export default function Footer({ logo = assetPath("0c1a8.svg") }: FooterProps) {
         <div className="footer-links">
           <h3>Navigasi</h3>
           <a href="/#biografi">Biografi Dosen</a>
-          <a href="/riset">Hibah Aktif</a>
+          <a href="/penelitian">Hibah Aktif</a>
           <a href="/mata-kuliah">Arsip Silabus</a>
           <a href="/pengabdian">Kegiatan Masyarakat</a>
         </div>
         <div className="footer-links">
           <h3>Profil Akademik</h3>
-          <a href="/riset">Google Scholar</a>
-          <a href="/riset">ResearchGate</a>
-          <a href="/riset">ACM Digital Library</a>
+          <a href="/penelitian">Google Scholar</a>
+          <a href="/penelitian">ResearchGate</a>
+          <a href="/penelitian">ACM Digital Library</a>
           <a href="/#biografi">Halaman Lab MIT</a>
         </div>
         <div className="footer-consultation">

@@ -274,8 +274,8 @@ Research module manages:
 
 Routes:
 
-    GET /riset
-    GET /riset/{slug}
+    GET /Penelitian
+    GET /Penelitian/{slug}
 
 Components:
 

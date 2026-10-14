@@ -18,28 +18,29 @@ class ResearchService
                     "id" => (string) $project->id,
                     "year" => (string) $project->year,
                     "image" => $project->image_path,
-                    "title" =>$project->title,
+                    "title" => $project->title,
                     "description" => $project->summary,
                     "meta" => $project->funding_source,
                     "publication_url" => $project->publication_url,
                     "slug" => $project->slug,
+                    "video_url" => $project->video_url,
                 ],
             )
             ->all();
 
         return [
             "eyebrow" => "DAFTAR PORTOFOLIO",
-            "title" => "Portofolio Riset",
+            "title" => "Portofolio Penelitian",
             "description" =>
             "Hibah aktif, makalah fundamental, dan rekayasa sistem terapan berskala global. Telusuri lebih dari satu dekade inovasi komputasi terdesentralisasi.",
-            "allLabel" => "Semua Riset",
-            "previousLabel" => "Riset Sebelumnya",
+            "allLabel" => "Semua Penelitian",
+            "previousLabel" => "Penelitian Sebelumnya",
             "filterLabel" => "Filter berdasarkan Tahun:",
             "resultLabel" => "Menampilkan " . count($items) . " Proyek Utama",
             "landing" => [
-                "eyebrow" => "PORTOFOLIO RISET",
+                "eyebrow" => "PORTOFOLIO PENELITIAN",
                 "title" => "Bidang Aktif & Proyek Utama",
-                "ctaLabel" => "Jelajahi Riset",
+                "ctaLabel" => "Jelajahi Penelitian",
                 "featuredCount" => 3,
             ],
             "assets" => [

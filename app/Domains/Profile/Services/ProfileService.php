@@ -16,7 +16,7 @@ class ProfileService
         return [
             [
                 "value" => "140+",
-                "label" => "Publikasi Riset",
+                "label" => "Publikasi Penelitian",
                 "detail" => "indeks-h: 28 | 3,200+ Sitasi",
             ],
             [

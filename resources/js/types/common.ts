@@ -18,6 +18,7 @@ export type ListingItem = {
   publication_url?:string | null;
   syllabus_url?:string | null;
   impact_url?:string | null;
+  video_url?:string | null;
 };
 
 export type ListingPageData = {

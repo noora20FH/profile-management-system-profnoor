@@ -13,11 +13,13 @@ export default function OutreachCard({ program }: OutreachCardProps) {
         <small>{program.category}</small>
         <h3>{program.title}</h3>
         <p>{program.description}</p>
+        <a href={program.video_url} target="_blank" rel="noopener noreferrer">
+          Tonton Dokumentasi Program →
+        </a>
         <a href={program.impact_url} target="_blank" rel="noopener noreferrer">
-          Pelajari Lebih Lanjut tentang Dampak
+          Pelajari Lebih Lanjut tentang Dampak →
         </a>
       </div>
-      
     </article>
   );
 }

@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Route;
 use App\Domains\Publication\Controllers\PublicationController;
 
 Route::get("/", ProfileController::class)->name("home");
-Route::get("/riset", [ResearchController::class, "index"])->name(
+Route::get("/penelitian", [ResearchController::class, "index"])->name(
     "research.index",
 );
-Route::get("/riset/{researchProject:slug}", [
+Route::get("/penelitian/{researchProject:slug}", [
     ResearchController::class,
     "show",
 ])->name("research.show");

@@ -216,7 +216,6 @@ profile-web-profnoor
 │ ├── Pages
 │ │ ├── HomePage.tsx
 │ │ ├── ResearchPage.tsx
-│ │ ├── ResearchDetailPage.tsx
 │ │ ├── CoursesPage.tsx
 │ │ └── OutreachPage.tsx
 │ │

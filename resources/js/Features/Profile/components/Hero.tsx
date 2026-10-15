@@ -5,8 +5,16 @@ import type { InertiaPageProps } from "@/types/common";
 import { assetPath } from "@/utils/asset";
 
 export default function Hero() {
-  const metrics = usePage<InertiaPageProps>().props.profileMetrics ?? [];
+  const { profile, profileMetrics } = usePage<InertiaPageProps>().props;
+  const metrics = profileMetrics ?? [];
+  const email =
+    (profile as { email?: string | null } | undefined)?.email ??
+    "moh.noor@polinema.ac.id";
 
+  // Gmail compose URL
+  const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+    email,
+  )}&su=${encodeURIComponent("Konsultasi Akademik")}`;
   return (
     <>
       <div className="hero-shell" id="beranda">
@@ -33,7 +41,9 @@ export default function Hero() {
               </a>
               <a
                 className="button button--outline"
-                href="mailto:noora20fairy@gmail.com"
+                href={gmailComposeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Hubungi Saya
               </a>

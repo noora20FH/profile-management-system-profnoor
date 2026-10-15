@@ -61,6 +61,7 @@ export type InertiaPageProps = {
   research?: ListingPageData;
   publication?: ListingPageData;
   [key: string]: unknown;
+  email?: string;
 };
 
 export const listingFilters = [

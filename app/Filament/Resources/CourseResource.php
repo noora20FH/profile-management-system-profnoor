@@ -7,6 +7,7 @@ use App\Filament\Resources\CourseResource\Pages;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
@@ -36,7 +37,18 @@ class CourseResource extends Resource
                 ->maxLength(255),
             TextInput::make("semester")->required()->maxLength(100),
             TextInput::make("year")->required()->numeric()->minValue(1900),
-            TextInput::make("image_path")->maxLength(255),
+
+            FileUpload::make("image_path")
+                ->label("Gambar Mata Kuliah")
+                ->image()
+                ->disk("public")
+                ->directory("images/courses")
+                ->visibility("public")
+                ->maxSize(2048)
+                ->acceptedFileTypes(["image/jpeg", "image/png", "image/webp"])
+                ->imageEditor()
+                ->columnSpanFull(),
+
             TextInput::make("syllabus_url")->url()->maxLength(255),
             Textarea::make("description")
                 ->required()

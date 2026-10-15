@@ -12,6 +12,10 @@ class ListProfiles extends ListRecords
 
     protected function getHeaderActions(): array
     {
+        if (\App\Domains\Profile\Models\Profile::count() > 0) {
+            return [];
+        }
+
         return [CreateAction::make()];
     }
 }

@@ -1,20 +1,56 @@
 import { usePage } from "@inertiajs/react";
 
 import Navbar from "@/Layouts/Navbar";
-import type { InertiaPageProps } from "@/types/common";
+import type { InertiaPageProps, ProfileMetric } from "@/types/common";
 import { assetPath } from "@/utils/asset";
+
+const FALLBACK_METRICS: ProfileMetric[] = [
+  {
+    value: "18+",
+    label: "Tahun Pengalaman",
+    detail: "Riset & pengajaran di bidang sistem terdistribusi.",
+  },
+  {
+    value: "120+",
+    label: "Publikasi Ilmiah",
+    detail: "Jurnal & konferensi internasional bereputasi.",
+  },
+  {
+    value: "35+",
+    label: "Program Pengabdian",
+    detail: "Kolaborasi dengan desa mitra & komunitas.",
+  },
+];
 
 export default function Hero() {
   const { profile, profileMetrics } = usePage<InertiaPageProps>().props;
-  const metrics = profileMetrics ?? [];
-  const email =
-    (profile as { email?: string | null } | undefined)?.email ??
-    "moh.noor@polinema.ac.id";
 
-  // Gmail compose URL
+  const name = profile?.name ?? "Prof. Mohammad Noor Hidayat";
+  const statusPill = profile?.status_pill ?? "KETUA ILMU & TEKNIK KOMPUTER";
+  const heroDescription =
+    profile?.hero_description ??
+    "Merintis sistem AI terdistribusi, kerangka komputasi edge terfederasi yang aman, dan solusi jaringan tangguh berskala global. Berdedikasi untuk mendidik generasi penerus akademisi komputasi dan mengubah teknologi mentah menjadi manfaat bagi komunitas global.";
+
+  const heroPhoto =
+    profile?.hero_photo_url ?? profile?.photo_url ?? assetPath("2e406.png");
+
+  const ctaPrimaryLabel =
+    profile?.hero_cta_primary_label ?? "Lihat Daftar Penelitian";
+  const ctaPrimaryUrl = profile?.hero_cta_primary_url ?? "/Penelitian";
+  const ctaSecondaryLabel = profile?.hero_cta_secondary_label ?? "Hubungi Saya";
+
+  const email = profile?.email ?? "moh.noor@polinema.ac.id";
+
+  const metrics: ProfileMetric[] =
+    (profileMetrics && profileMetrics.length > 0
+      ? profileMetrics
+      : profile?.hero_metrics) ?? FALLBACK_METRICS;
+
+  // Gmail compose URL — kalau CTA secondary label mengandung "Hubungi"
   const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
     email,
   )}&su=${encodeURIComponent("Konsultasi Akademik")}`;
+
   return (
     <>
       <div className="hero-shell" id="beranda">
@@ -24,36 +60,41 @@ export default function Hero() {
             <div className="hero-title-block">
               <p className="status-pill">
                 <span aria-hidden="true" />
-                KETUA ILMU & TEKNIK KOMPUTER
+                {statusPill}
               </p>
-              <h1>Prof. Mohammad Noor Hidayat</h1>
-              <p className="hero-description">
-                Merintis sistem AI terdistribusi, kerangka komputasi edge
-                terfederasi yang aman, dan solusi jaringan tangguh berskala
-                global. Berdedikasi untuk mendidik generasi penerus akademisi
-                komputasi dan mengubah teknologi mentah menjadi manfaat bagi
-                komunitas global.
-              </p>
+              <h1>{name}</h1>
+              <p className="hero-description">{heroDescription}</p>
             </div>
+
             <div className="button-row">
-              <a className="button button--primary" href="/Penelitian">
-                Lihat Daftar Penelitian
+              <a className="button button--primary" href={ctaPrimaryUrl}>
+                {ctaPrimaryLabel}
               </a>
-              <a
-                className="button button--outline"
-                href={gmailComposeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Hubungi Saya
-              </a>
+
+              {profile?.hero_cta_secondary_label ? (
+                <a
+                  className="button button--outline"
+                  href={gmailComposeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {ctaSecondaryLabel}
+                </a>
+              ) : (
+                <a
+                  className="button button--outline"
+                  href={gmailComposeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {ctaSecondaryLabel}
+                </a>
+              )}
             </div>
           </div>
+
           <div className="hero-portrait">
-            <img
-              src={assetPath("2e406.png")}
-              alt="Prof. Mohammad Noor Hidayat"
-            />
+            <img src={heroPhoto} alt={name} />
           </div>
         </main>
       </div>

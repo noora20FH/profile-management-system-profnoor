@@ -5,7 +5,7 @@ export type ListingYear = string;
 export type ListingItem = {
   id: string;
   year: ListingYear;
-  image?: string;
+  image_url?: string;
   title: string;
   description: string;
   meta?: string;
@@ -49,20 +49,7 @@ export type ListingPageData = {
   
 };
 
-export type InertiaPageProps = {
-  courses?: ListingPageData;
-  outreach?: ListingPageData;
-  page?: ListingPageData;
-  profileMetrics?: Array<{
-    value: string;
-    label: string;
-    detail: string;
-  }>;
-  research?: ListingPageData;
-  publication?: ListingPageData;
-  [key: string]: unknown;
-  email?: string;
-};
+
 
 export const listingFilters = [
   "all",
@@ -74,3 +61,51 @@ export const listingFilters = [
 ] as const;
 
 export type ListingFilterValue = (typeof listingFilters)[number];
+
+export type ProfileMetric = {
+  value: string;
+  label: string;
+  detail: string;
+};
+
+export type ProfileQualification = {
+  degree: string;
+  institution: string;
+};
+
+export type ProfileData = {
+  id: number;
+  name: string;
+  title: string;
+  status_pill: string | null;
+  email: string | null;
+  phone: string | null;
+  institution: string | null;
+  hero_description: string | null;
+  hero_photo_url: string | null;
+  photo_url: string | null;
+  hero_cta_primary_label: string | null;
+  hero_cta_primary_url: string | null;
+  hero_cta_secondary_label: string | null;
+  hero_metrics: ProfileMetric[] | null;
+  biography_photo_url: string | null;
+  biography_eyebrow: string | null;
+  biography_title: string | null;
+  biography_paragraphs: string[] | null;
+  qualifications: ProfileQualification[] | null;
+  expertise_tags: string[] | null;
+  biography: string | null;
+};
+
+export type InertiaPageProps = {
+  appName?: string;
+  profile?: ProfileData | null;
+  profileMetrics?: ProfileMetric[];
+  courses?: ListingPageData;
+  outreach?: ListingPageData;
+  page?: ListingPageData;
+  research?: ListingPageData;
+  publication?: ListingPageData;
+  [key: string]: unknown;
+  email?: string;
+};

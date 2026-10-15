@@ -1,8 +1,14 @@
 import SectionHeading from "./SectionHeading";
 
+import { usePage } from "@inertiajs/react";
+
+import type {
+  InertiaPageProps,
+  ProfileQualification,
+} from "@/types/common";
 import { assetPath } from "@/utils/asset";
 
-const tags = [
+const FALLBACK_TAGS: string[] = [
   "Sistem Terdistribusi",
   "Komputasi Edge AI",
   "Pembelajaran Terfederasi",
@@ -10,50 +16,77 @@ const tags = [
   "Kedaulatan Data",
 ];
 
+const FALLBACK_PARAGRAPHS: string[] = [
+  "Prof. Mohammad Noor Hidayat adalah Profesor Sistem Terdistribusi dengan jalur tenur di Institut Teknologi Metropolitan. Selama lebih dari 18 tahun, kelompok Penelitiannya berkarya di persimpangan antara model kecerdasan buatan berdimensi tinggi yang kompleks dan perangkat keras jaringan terdesentralisasi.",
+  "Ia meraih gelar Ph.D. dalam Ilmu Komputer dari Universitas Cambridge dengan spesialisasi pada model eksekusi transaksional berkinerja tinggi. Ia merupakan penerima langsung berbagai penghargaan makalah internasional bergengsi dan saat ini bertugas dalam dewan penasihat komputasi global untuk standar jaringan generasi berikutnya.",
+];
+
+const FALLBACK_QUALIFICATIONS: ProfileQualification[] = [
+  {
+    degree: "Ph.D. CS",
+    institution: "Universitas Cambridge (Divisi Spesialis Sistem Terdistribusi)",
+  },
+  {
+    degree: "M.Sc. Eng",
+    institution:
+      "Universitas Teknik Nasional (Arsitektur Paralel Berkinerja Tinggi)",
+  },
+];
+
 export default function Biography() {
+  const { profile } = usePage<InertiaPageProps>().props;
+
+  const eyebrow = profile?.biography_eyebrow ?? "BIOGRAFI";
+  const title = profile?.biography_title ?? "Latar Belakang Akademik";
+  const paragraphs =
+    profile?.biography_paragraphs && profile.biography_paragraphs.length > 0
+      ? profile.biography_paragraphs
+      : FALLBACK_PARAGRAPHS;
+
+  const qualifications =
+    profile?.qualifications && profile.qualifications.length > 0
+      ? profile.qualifications
+      : FALLBACK_QUALIFICATIONS;
+
+  const tags =
+    profile?.expertise_tags && profile.expertise_tags.length > 0
+      ? profile.expertise_tags
+      : FALLBACK_TAGS;
+
+  const photo = profile?.biography_photo_url ?? assetPath("0426e.png");
+  const photoAlt = `${profile?.name ?? "Prof. Mohammad Noor Hidayat"} mengajar di ruang kuliah`;
+
   return (
     <section className="biography section-shell section-light" id="biografi">
       <div className="biography-image">
-        <img
-          src={assetPath("0426e.png")}
-          alt="Prof. Mohammad Noor Hidayat mengajar di ruang kuliah"
-        />
+        <img src={photo} alt={photoAlt} />
       </div>
+
       <div className="biography-copy">
-        <SectionHeading eyebrow="BIOGRAFI" title="Latar Belakang Akademik" />
-        <p>
-          Prof. Mohammad Noor Hidayat adalah Profesor Sistem Terdistribusi
-          dengan jalur tenur di Institut Teknologi Metropolitan. Selama lebih
-          dari 18 tahun, kelompok Penelitiannya berkarya di persimpangan antara
-          model kecerdasan buatan berdimensi tinggi yang kompleks dan perangkat
-          keras jaringan terdesentralisasi.
-        </p>
-        <p>
-          Ia meraih gelar Ph.D. dalam Ilmu Komputer dari Universitas Cambridge
-          dengan spesialisasi pada model eksekusi transaksional berkinerja
-          tinggi. Ia merupakan penerima langsung berbagai penghargaan makalah
-          internasional bergengsi dan saat ini bertugas dalam dewan penasihat
-          komputasi global untuk standar jaringan generasi berikutnya.
-        </p>
-        <dl className="qualifications">
-          <div>
-            <dt>Ph.D. CS</dt>
-            <dd>
-              Universitas Cambridge (Divisi Spesialis Sistem Terdistribusi)
-            </dd>
-          </div>
-          <div>
-            <dt>M.Sc. Eng</dt>
-            <dd>
-              Universitas Teknik Nasional (Arsitektur Paralel Berkinerja Tinggi)
-            </dd>
-          </div>
-        </dl>
-        <ul className="tag-list" aria-label="Bidang keahlian">
-          {tags.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
+        <SectionHeading eyebrow={eyebrow} title={title} />
+
+        {paragraphs.map((paragraph, index) => (
+          <p key={index}>{paragraph}</p>
+        ))}
+
+        {qualifications.length > 0 && (
+          <dl className="qualifications">
+            {qualifications.map((item) => (
+              <div key={item.degree}>
+                <dt>{item.degree}</dt>
+                <dd>{item.institution}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+
+        {tags.length > 0 && (
+          <ul className="tag-list" aria-label="Bidang keahlian">
+            {tags.map((tag) => (
+              <li key={tag}>{tag}</li>
+            ))}
+          </ul>
+        )}
       </div>
     </section>
   );

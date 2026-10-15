@@ -35,10 +35,10 @@ export default function ListingCard({
 
   return (
     <Card className="listing-card">
-      {item.image ? (
+      {item.image_url ? (
         <img
           className="listing-card-image"
-          src={item.image}
+          src={item.image_url}
           alt={item.title}
         />
       ) : (

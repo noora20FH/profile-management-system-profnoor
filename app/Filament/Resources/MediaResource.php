@@ -35,8 +35,7 @@ class MediaResource extends Resource
                 ->default("default")
                 ->maxLength(100),
             TextInput::make("disk")->required()->default("public"),
-            TextInput::make("mime_type")->maxLength(100),
-            TextInput::make("size")->numeric(),
+            // mime_type dan size diisi otomatis oleh Create/Edit page
         ]);
     }
 

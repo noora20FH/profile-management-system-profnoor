@@ -7,6 +7,7 @@ use App\Filament\Resources\ResearchResource\Pages;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
@@ -32,8 +33,23 @@ class ResearchResource extends Resource
                 ->maxLength(255),
             TextInput::make("year")->required()->numeric()->minValue(1900),
             TextInput::make("funding_source")->maxLength(255),
-            TextInput::make("image_path")->maxLength(255),
+
+            FileUpload::make("image_path")
+                ->label("Gambar Penelitian")
+                ->image()
+                ->disk("public")
+                ->directory("images/research")
+                ->visibility("public")
+                ->maxSize(2048)
+                ->acceptedFileTypes(["image/jpeg", "image/png", "image/webp"])
+                ->imageEditor()
+                ->columnSpanFull(),
+
             TextInput::make("publication_url")->url()->maxLength(255),
+            TextInput::make("video_url")
+                ->label("Video URL")
+                ->url()
+                ->nullable(),
             Textarea::make("summary")->required()->rows(8)->columnSpanFull(),
             TextInput::make("sort_order")->numeric()->default(0),
             Toggle::make("is_featured"),

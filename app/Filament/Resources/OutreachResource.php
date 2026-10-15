@@ -7,6 +7,7 @@ use App\Filament\Resources\OutreachResource\Pages;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
@@ -32,11 +33,26 @@ class OutreachResource extends Resource
                 ->maxLength(255),
             TextInput::make("category")->maxLength(255),
             TextInput::make("year")->required()->maxLength(20),
-            TextInput::make("image_path")->maxLength(255),
+
+            FileUpload::make("image_path")
+                ->label("Gambar Program")
+                ->image()
+                ->disk("public")
+                ->directory("images/outreach")
+                ->visibility("public")
+                ->maxSize(2048)
+                ->acceptedFileTypes(["image/jpeg", "image/png", "image/webp"])
+                ->imageEditor()
+                ->columnSpanFull(),
+
             TextInput::make("primary_metric")->maxLength(255),
             TextInput::make("secondary_metric")->maxLength(255),
-            TextInput::make('impact_url')
-                ->label('Impact Documentation URL')
+            TextInput::make("impact_url")
+                ->label("Impact Documentation URL")
+                ->url()
+                ->nullable(),
+            TextInput::make("video_url")
+                ->label("Video URL")
                 ->url()
                 ->nullable(),
             Textarea::make("description")

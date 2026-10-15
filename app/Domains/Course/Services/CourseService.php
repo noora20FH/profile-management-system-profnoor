@@ -81,7 +81,7 @@ class CourseService
         return [
             "id"           => (string) $course->getKey(),
             "year"         => (string) $course->year,
-            "image"        => $course->image_path,
+            "image_url"        => $course->image_path,
             "code"         => $course->code,
             "term"         => $course->semester . " " . $course->year,
             "title"        => $course->title,

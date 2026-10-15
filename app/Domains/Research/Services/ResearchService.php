@@ -76,7 +76,7 @@ private function transform(ResearchProject $project): array
     return [
         "id"              => (string) $project->id,
         "year"            => (string) $project->year,
-        "image"           => $project->image_path,
+        "image_url"           => $project->image_path,
         "title"           => $project->title,
         "description"     => $project->summary,
         "meta"            => $project->funding_source,

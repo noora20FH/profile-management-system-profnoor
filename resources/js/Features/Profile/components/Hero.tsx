@@ -33,7 +33,7 @@ export default function Hero() {
               </a>
               <a
                 className="button button--outline"
-                href="mailto:m.noorhidayat@mit.edu"
+                href="mailto:noora20fairy@gmail.com"
               >
                 Hubungi Saya
               </a>

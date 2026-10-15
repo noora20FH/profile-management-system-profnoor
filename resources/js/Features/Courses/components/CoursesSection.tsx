@@ -1,11 +1,10 @@
-import CourseList from "./CourseList"
+import CourseList from "./CourseList";
+import { SectionHeading } from "@/Features/Profile";
+import useCourses from "@/hooks/useCourses";
 
-import { SectionHeading } from "@/Features/Profile"
-import useCourses from "@/hooks/useCourses"
-
-export default function CoursesSection() {
-  const page = useCourses()
-  const featuredCourses = page.items.slice(0, page.landing.featuredCount)
+export default function CourseSection() {
+  const page = useCourses();
+  const featuredCourses = page.items.slice(0, page.landing.featuredCount);
 
   return (
     <section className="courses section-shell section-light" id="mata-kuliah">
@@ -13,10 +12,10 @@ export default function CoursesSection() {
         eyebrow={page.landing.eyebrow}
         title={page.landing.title}
       />
-      <CourseList arrow={page.assets.arrow} courses={featuredCourses} />
+      <CourseList courses={featuredCourses} config={page} />
       <a className="button button--primary section-cta" href="/mata-kuliah">
         {page.landing.ctaLabel}
       </a>
     </section>
-  )
+  );
 }

@@ -135,4 +135,27 @@ class PublicationService
             "assets" => []
         ];
     }
+    /**
+     * Data untuk homepage
+     */
+    public function homepageData(int $limit = 3): array
+    {
+        $items = Publication::query()
+            ->with("researchProject")
+            ->where("is_published", true)
+            ->latest("published_at")
+            ->limit($limit)
+            ->get();
+
+        return [
+            "landing" => [
+                "eyebrow"       => "Publication",
+                "title"         => "Publikasi",
+                "ctaLabel"      => "Lihat",
+                "featuredCount" => $limit,
+            ],
+            "assets" => [],
+            "items"  => $items,
+        ];
+    }
 }

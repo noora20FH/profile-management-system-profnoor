@@ -1,18 +1,20 @@
-import type { ResearchProject } from "../types"
+import ListingCard from "@/Components/UI/ListingCard";
+import type { ResearchProject } from "../types";
+import type { ListingPageData } from "@/types/common";
 
-type ResearchCardProps = {
-  project: ResearchProject
-}
+type Props = {
+  project: ResearchProject;
+  config: ListingPageData;
+};
 
-export default function ResearchCard({ project }: ResearchCardProps) {
+export default function ResearchCard({ project, config }: Props) {
   return (
-    <article className="research-card">
-      <img src={project.image} alt="" />
-      <div className="card-copy">
-        <h3>{project.title}</h3>
-        <p>{project.description}</p>
-        <small>{project.meta}</small>
-      </div>
-    </article>
-  )
+    <ListingCard
+      item={project}
+      type="research"
+      config={config}
+      headingLevel="h3"
+      eyebrow={project.meta}
+    />
+  );
 }

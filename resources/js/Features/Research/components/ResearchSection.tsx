@@ -1,5 +1,4 @@
 import ResearchList from "./ResearchList";
-
 import { SectionHeading } from "@/Features/Profile";
 import useResearch from "@/hooks/useResearch";
 
@@ -14,7 +13,7 @@ export default function ResearchSection() {
         title={page.landing.title}
         light
       />
-      <ResearchList projects={featuredProjects} />
+      <ResearchList projects={featuredProjects} config={page} />
       <a className="button button--dark section-cta" href="/penelitian">
         {page.landing.ctaLabel}
       </a>

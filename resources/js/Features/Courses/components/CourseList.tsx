@@ -1,18 +1,18 @@
-import CourseCard from "./CourseCard"
+import CourseCard from "./CourseCard";
+import type { Course } from "../types";
+import type { ListingPageData } from "@/types/common";
 
-import type { Course } from "../types"
+type Props = {
+  courses: Course[];
+  config: ListingPageData;
+};
 
-type CourseListProps = {
-  arrow: string
-  courses: Course[]
-}
-
-export default function CourseList({ arrow, courses }: CourseListProps) {
+export default function CourseList({ courses, config }: Props) {
   return (
-    <div className="course-grid">
+    <div className="listing-grid">
       {courses.map((course) => (
-        <CourseCard arrow={arrow} course={course} key={course.id} />
+        <CourseCard key={course.id} course={course} config={config} />
       ))}
     </div>
-  )
+  );
 }

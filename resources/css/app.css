@@ -709,7 +709,6 @@ img {
   font-weight: 600;
 }
 
-
 .publication-card {
   overflow: hidden;
   border: 1px solid rgb(255 255 255 / 8%);
@@ -719,13 +718,11 @@ img {
   box-shadow: 0 18px 48px rgb(0 8 22 / 14%);
 }
 
-
 .publication-card > img {
   width: 100%;
   height: 220px;
   object-fit: cover;
 }
-
 
 .publication-card-body {
   display: flex;
@@ -733,7 +730,6 @@ img {
   gap: 16px;
   padding: 24px;
 }
-
 
 .publication-card h3 {
   margin: 0;
@@ -743,14 +739,12 @@ img {
   line-height: 1.3;
 }
 
-
 .publication-card p {
   margin: 0;
   color: rgb(255 255 255 / 70%);
   font-size: 14px;
   line-height: 1.5;
 }
-
 
 .publication-type {
   display: inline-block;
@@ -760,7 +754,6 @@ img {
   color: var(--mint);
   font-size: 12px;
 }
-
 
 .publication-card a {
   color: var(--mint);
@@ -773,37 +766,26 @@ img {
   color: rgb(255 255 255 / 60%);
 }
 
-.publication-filter{
+.publication-filter {
+  display: flex;
 
-    display:flex;
+  gap: 12px;
 
-    gap:12px;
+  flex-wrap: wrap;
 
-    flex-wrap:wrap;
-
-    margin-top:20px;
-
+  margin-top: 20px;
 }
 
+.publication-filter button {
+  padding: 10px 22px;
 
-.publication-filter button{
+  border-radius: 999px;
 
-    padding:
-    10px 22px;
-
-    border-radius:
-    999px;
-
-    font-size:
-    14px;
-
+  font-size: 14px;
 }
 
-
-.publication-filter button.active{
-
-background:#256b42;
-
+.publication-filter button.active {
+  background: #256b42;
 }
 
 .footer {
@@ -1376,14 +1358,44 @@ background:#256b42;
   padding-top: 16px;
   padding-bottom: 80px;
 }
+/* Khusus homepage: buang padding grid karena section sudah punya padding-block */
+.courses .listing-grid,
+.green-section .listing-grid {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
+/* Sesuaikan CTA — sekarang gap 48px dari flex sudah cukup, atau rapatkan sedikit */
+.courses .section-cta,
+.green-section .section-cta {
+  margin-top: -24px; /* ubah dari -32px, atau set 0 kalau mau pakai gap 48px */
+}
 .listing-card {
+  color: var(--white); /* ← tambahkan ini */
   height: 100%;
   overflow: hidden;
   border: 1px solid rgb(13 84 43 / 45%);
   border-radius: 14px;
   background: #13223a;
   box-shadow: 0 14px 42px rgb(0 8 22 / 12%);
+}
+
+/* Pastikan heading dan elemen teks eksplisit putih */
+.listing-card h2,
+.listing-card h3 {
+  color: var(--white);
+}
+
+/* Kalau Anda memakai eyebrow (mis. "IF101 • 1 2026") */
+.listing-card-eyebrow,
+.listing-card small {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--mint); /* atau rgb(153 217 178 / 78%) */
+  font-family: "Inter:Semi Bold", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
 }
 
 .listing-card-image {

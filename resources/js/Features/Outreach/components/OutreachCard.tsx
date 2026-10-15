@@ -1,25 +1,20 @@
+import ListingCard from "@/Components/UI/ListingCard";
 import type { OutreachProgram } from "../types";
+import type { ListingPageData } from "@/types/common";
 
-type OutreachCardProps = {
+type Props = {
   program: OutreachProgram;
+  config: ListingPageData;
 };
 
-export default function OutreachCard({ program }: OutreachCardProps) {
-  console.log("OUTREACH DATA:", program);
+export default function OutreachCard({ program, config }: Props) {
   return (
-    <article className="outreach-card">
-      <img src={program.image} alt="" />
-      <div>
-        <small>{program.category}</small>
-        <h3>{program.title}</h3>
-        <p>{program.description}</p>
-        <a href={program.video_url} target="_blank" rel="noopener noreferrer">
-          Tonton Dokumentasi Program →
-        </a>
-        <a href={program.impact_url} target="_blank" rel="noopener noreferrer">
-          Pelajari Lebih Lanjut tentang Dampak →
-        </a>
-      </div>
-    </article>
+    <ListingCard
+      item={program}
+      type="outreach"
+      config={config}
+      headingLevel="h3"
+      eyebrow={program.category}
+    />
   );
 }

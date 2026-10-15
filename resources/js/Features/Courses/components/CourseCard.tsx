@@ -1,23 +1,22 @@
-import type { Course } from "../types"
+import ListingCard from "@/Components/UI/ListingCard";
+import type { Course } from "../types";
+import type { ListingPageData } from "@/types/common";
 
-type CourseCardProps = {
-  course: Course
-  arrow: string
-}
+type Props = {
+  course: Course;
+  config: ListingPageData;
+};
 
-export default function CourseCard({ course, arrow }: CourseCardProps) {
+export default function CourseCard({ course, config }: Props) {
+  const eyebrow = [course.code, course.term].filter(Boolean).join(" • ");
+
   return (
-    <article className="course-card">
-      <div className="course-meta">
-        <strong>{course.code}</strong>
-        <span>{course.term}</span>
-      </div>
-      <h3>{course.title}</h3>
-      <p>{course.description}</p>
-      <a href={`mailto:m.noorhidayat@mit.edu?subject=Silabus ${course.code}`}>
-        Unduh Silabus Mata Kuliah
-        <img src={arrow} alt="" />
-      </a>
-    </article>
-  )
+    <ListingCard
+      item={course}
+      type="courses"
+      config={config}
+      headingLevel="h3"
+      eyebrow={eyebrow}
+    />
+  );
 }

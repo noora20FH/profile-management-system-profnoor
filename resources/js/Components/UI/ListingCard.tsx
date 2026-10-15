@@ -4,13 +4,21 @@ import type { ListingItem, ListingType, ListingPageData } from "@/types/common";
 
 type Props = {
   item: ListingItem;
-
   type: ListingType;
-
   config: ListingPageData;
+  /** default "h2" — pakai "h3" saat dipakai di dalam section homepage */
+  headingLevel?: "h2" | "h3";
+  /** baris kecil di atas judul, mis. "IF101 • Semester 1 2026" */
+  eyebrow?: string;
 };
 
-export default function ListingCard({ item, type, config }: Props) {
+export default function ListingCard({
+  item,
+  type,
+  config,
+  headingLevel: Heading = "h2",
+  eyebrow,
+}: Props) {
   const href =
     type === "research"
       ? item.publication_url
@@ -28,17 +36,21 @@ export default function ListingCard({ item, type, config }: Props) {
   return (
     <Card className="listing-card">
       {item.image ? (
-        <img className="listing-card-image" src={item.image} />
+        <img
+          className="listing-card-image"
+          src={item.image}
+          alt={item.title}
+        />
       ) : (
         <div className="listing-card-image listing-card-image--empty" />
       )}
 
       <div className="listing-card-body">
-        <h2>{item.title}</h2>
+        {eyebrow && <small className="listing-card-eyebrow">{eyebrow}</small>}
+
+        <Heading>{item.title}</Heading>
 
         <p>{item.description}</p>
-
-        {/* LINK VIDEO KHUSUS PENGABDIAN */}
 
         {type === "outreach" && item.video_url && (
           <a href={item.video_url} target="_blank" rel="noopener noreferrer">
@@ -46,21 +58,18 @@ export default function ListingCard({ item, type, config }: Props) {
           </a>
         )}
 
-        {/* LINK VIDEO KHUSUS PENELITIAN */}
-
         {type === "research" && item.video_url && (
           <a href={item.video_url} target="_blank" rel="noopener noreferrer">
             Tonton Dokumentasi Penelitian →
           </a>
         )}
 
-        {/* LINK UTAMA */}
-
         {href && (
           <a href={href} target="_blank" rel="noopener noreferrer">
             {actionLabel}
-
-            <img src={config.assets.arrow} />
+            {config.assets?.arrow && (
+              <img src={config.assets.arrow} alt="" />
+            )}
           </a>
         )}
       </div>

@@ -1,17 +1,18 @@
-import ResearchCard from "./ResearchCard"
+import ResearchCard from "./ResearchCard";
+import type { ResearchProject } from "../types";
+import type { ListingPageData } from "@/types/common";
 
-import type { ResearchProject } from "../types"
+type Props = {
+  projects: ResearchProject[];
+  config: ListingPageData;
+};
 
-type ResearchListProps = {
-  projects: ResearchProject[]
-}
-
-export default function ResearchList({ projects }: ResearchListProps) {
+export default function ResearchList({ projects, config }: Props) {
   return (
-    <div className="research-grid">
+    <div className="listing-grid">
       {projects.map((project) => (
-        <ResearchCard key={project.id} project={project} />
+        <ResearchCard key={project.id} project={project} config={config} />
       ))}
     </div>
-  )
+  );
 }

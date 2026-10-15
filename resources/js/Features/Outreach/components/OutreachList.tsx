@@ -1,17 +1,18 @@
-import OutreachCard from "./OutreachCard"
+import OutreachCard from "./OutreachCard";
+import type { OutreachProgram } from "../types";
+import type { ListingPageData } from "@/types/common";
 
-import type { OutreachProgram } from "../types"
+type Props = {
+  programs: OutreachProgram[];
+  config: ListingPageData;
+};
 
-type OutreachListProps = {
-  programs: OutreachProgram[]
-}
-
-export default function OutreachList({ programs }: OutreachListProps) {
+export default function OutreachList({ programs, config }: Props) {
   return (
-    <div className="outreach-grid">
+    <div className="listing-grid">
       {programs.map((program) => (
-        <OutreachCard key={program.id} program={program} />
+        <OutreachCard key={program.id} program={program} config={config} />
       ))}
     </div>
-  )
+  );
 }

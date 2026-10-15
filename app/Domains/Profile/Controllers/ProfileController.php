@@ -20,12 +20,12 @@ class ProfileController
         PublicationService $publication,
     ): Response {
         return Inertia::render("HomePage", [
-            "profile" => $profiles->current(),
-            "profileMetrics" => $profiles->metrics(),
-            "research" => $research->pageData(),
-            "courses" => $courses->pageData(),
-            "outreach" => $outreach->pageData(),
-            "publication" => $publication->pageData(),
+            "profile"         => $profiles->current(),
+            "profileMetrics"  => $profiles->metrics(),
+            "research"        => $research->homepageData(3),    // ← 3 unggulan
+            "courses"         => $courses->homepageData(3),     // ← 3 unggulan
+            "outreach"        => $outreach->homepageData(3),    // ← 3 unggulan
+            "publication"     => $publication->homepageData(3), // ← 3 unggulan
         ]);
     }
 }

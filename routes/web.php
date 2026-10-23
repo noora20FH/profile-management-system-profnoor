@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Domains\Publication\Controllers\PublicationController;
 
 Route::get("/", ProfileController::class)->name("home");
+
 Route::get("/penelitian", [ResearchController::class, "index"])->name(
     "research.index",
 );
@@ -21,6 +22,8 @@ Route::get("/mata-kuliah", [CourseController::class, "index"])->name(
 Route::get("/pengabdian", [OutreachController::class, "index"])->name(
     "outreach.index",
 );
-Route::get("/publikasi",[PublicationController::class,"index"])->name(
+Route::get("/publikasi", [PublicationController::class, "index"])->name(
     "publication.index"
 );
+
+Route::get('/media/{path}', [ProfileController::class, 'image'])->where('path', '.*')->name('image.proxy');

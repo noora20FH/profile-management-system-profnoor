@@ -39,7 +39,7 @@ class Profile extends Model
         'hero_photo_url',
         'biography_photo_url',
     ];
-        protected function casts(): array
+    protected function casts(): array
     {
         return [
             'is_active'            => 'boolean',
@@ -64,19 +64,15 @@ class Profile extends Model
     {
         return $this->resolveImageUrl($this->biography_photo_path);
     }
-
     private function resolveImageUrl(?string $path): ?string
     {
-        if (! $path) {
-            return null;
-        }
-
-        // Data lama di public/assets
+        if (! $path) return null;
+        
         if (str_starts_with($path, 'assets/')) {
             return asset($path);
         }
 
-        // Data baru upload Filament ke disk public
-        return Storage::disk('public')->url($path);
+        // Mengembalikan URL ke route proxy
+        return route('image.proxy', ['path' => $path]);
     }
 }

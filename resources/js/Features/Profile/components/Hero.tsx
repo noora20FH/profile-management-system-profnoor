@@ -92,9 +92,20 @@ export default function Hero() {
               )}
             </div>
           </div>
-
-          <div className="hero-portrait">
-            <img src={heroPhoto} alt={name} />
+          <div
+            className="hero-portrait"
+            onContextMenu={(e) => e.preventDefault()} // Mencegah klik kanan
+            onTouchStart={(e) => e.preventDefault()} // Mencegah sentuhan panjang
+            style={{ userSelect: "none" }} // Mencegah seleksi
+          >
+            <img
+              src={heroPhoto}
+              alt={name}
+              draggable={false} // Mencegah drag & drop
+              onDragStart={(e) => e.preventDefault()}
+              style={{ pointerEvents: "none" }} // Mematikan interaksi mouse langsung ke gambar
+              
+            />
           </div>
         </main>
       </div>

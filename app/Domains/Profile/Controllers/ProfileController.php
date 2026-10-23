@@ -28,4 +28,29 @@ class ProfileController
             "publication"     => $publication->homepageData(3), // ← 3 unggulan
         ]);
     }
+
+public function image($path)
+{
+    // Validasi apakah request berasal dari domain Anda sendiri (mencegah hotlinking)
+    $referer = request()->headers->get('referer');
+    $host = request()->getHost();
+    
+    // Jika referer kosong (akses langsung) atau bukan dari domain Anda
+    if (!$referer || parse_url($referer, PHP_URL_HOST) !== $host) {
+        abort(403, 'Unauthorized access');
+    }
+
+    $filePath = storage_path('app/public/' . $path);
+    
+    if (!file_exists($filePath)) {
+        abort(404);
+    }
+
+    // Tampilkan gambar tanpa opsi attachment
+    return response()->file($filePath, [
+        'Content-Type' => mime_content_type($filePath),
+        'Content-Disposition' => 'inline; filename="' . basename($filePath) . '"',
+        'Cache-Control' => 'no-store, no-cache, must-revalidate, max-age=0',
+    ]);
+}
 }

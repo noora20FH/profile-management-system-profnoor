@@ -15,20 +15,20 @@ class ProfileService
     {
         return [
             [
-                "value" => "140+",
+                "value" => "108+",
                 "label" => "Publikasi Penelitian",
-                "detail" => "indeks-h: 28 | 3,200+ Sitasi",
+                "detail" => "H-Index: 9 | 366+ Sitasi (Google Scholar)",
             ],
             [
-                "value" => "18+",
+                "value" => "25+",
                 "label" => "Tahun Pengabdian Akademik",
-                "detail" => "Di Institusi Global Terkemuka",
+                "detail" => "Politeknik Negeri Malang (sejak 2001)",
             ],
             [
-                "value" => "5,000+",
+                "value" => "500+",
                 "label" => "Mahasiswa & Peserta Bimbingan",
-                "detail" => "Kandidat Sarjana, MSc & Ph.D.",
-            ],
+                "detail" => "Kandidat Sarjana, MSc",
+            ]
         ];
     }
 }

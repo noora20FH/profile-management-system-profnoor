@@ -2,10 +2,7 @@ import SectionHeading from "./SectionHeading";
 
 import { usePage } from "@inertiajs/react";
 
-import type {
-  InertiaPageProps,
-  ProfileQualification,
-} from "@/types/common";
+import type { InertiaPageProps, ProfileQualification } from "@/types/common";
 import { assetPath } from "@/utils/asset";
 
 const FALLBACK_TAGS: string[] = [
@@ -24,7 +21,8 @@ const FALLBACK_PARAGRAPHS: string[] = [
 const FALLBACK_QUALIFICATIONS: ProfileQualification[] = [
   {
     degree: "Ph.D. CS",
-    institution: "Universitas Cambridge (Divisi Spesialis Sistem Terdistribusi)",
+    institution:
+      "Universitas Cambridge (Divisi Spesialis Sistem Terdistribusi)",
   },
   {
     degree: "M.Sc. Eng",
@@ -58,8 +56,18 @@ export default function Biography() {
 
   return (
     <section className="biography section-shell section-light" id="biografi">
-      <div className="biography-image">
-        <img src={photo} alt={photoAlt} />
+      <div
+        className="biography-image"
+        onContextMenu={(e) => e.preventDefault()}
+        onTouchStart={(e) => e.preventDefault()} // Mencegah sentuhan panjang
+      >
+        <img
+          src={photo}
+          alt={photoAlt}
+          draggable={false}
+          onDragStart={(e) => e.preventDefault()}
+          style={{ pointerEvents: "none", userSelect: "none" }}
+        />
       </div>
 
       <div className="biography-copy">

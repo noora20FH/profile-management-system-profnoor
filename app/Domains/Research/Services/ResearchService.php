@@ -49,7 +49,7 @@ public function pageData(): array
     return [
         "eyebrow"       => "DAFTAR PORTOFOLIO",
         "title"         => "Portofolio Penelitian",
-        "description"   => "Hibah aktif, makalah fundamental, dan rekayasa sistem terapan berskala global. Telusuri lebih dari satu dekade inovasi komputasi terdesentralisasi.",
+        "description"   => "Berfokus pada riset terapan dan fundamental di bidang energi terbarukan, sistem tenaga listrik, dan manajemen energi. Penelitian yang dijalankan tidak hanya bersifat teoretis, tetapi juga menghasilkan inovasi teknologi tepat guna, mulai dari pengembangan pembangkit listrik hingga sistem monitoring berbasis IoT.",
         "allLabel"      => "Semua Penelitian",
         "previousLabel" => "Penelitian Sebelumnya",
         "filterLabel"   => "Filter berdasarkan Tahun:",

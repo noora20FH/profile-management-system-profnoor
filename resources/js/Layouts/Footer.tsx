@@ -14,41 +14,40 @@ export default function Footer({ logo = assetPath("0c1a8.svg") }: FooterProps) {
             <strong>MNH</strong>
           </div>
           <p>
-            Institut Teknologi Metropolitan Departemen Ilmu & Teknik Komputer
-            Kantor: Blok 12, Lantai 4, Blok Inti Akademik
+            Jurusan Teknik Elektro, Politeknik Negeri Malang (Polinema).
+            Kampus Utama: Jl. Soekarno Hatta No. 9, Malang, Jawa Timur, Indonesia.
           </p>
-          <a href="mailto:m.noorhidayat@mit.edu">
-            m.noorhidayat@mit.edu · Telp: +60 3-1200 4560
+          <a href="mailto:moh.noor@polinema.ac.id">
+            moh.noor@polinema.ac.id
           </a>
         </div>
         <div className="footer-links">
           <h3>Navigasi</h3>
           <a href="/#biografi">Biografi Dosen</a>
-          <a href="/penelitian">Hibah Aktif</a>
-          <a href="/mata-kuliah">Arsip Silabus</a>
-          <a href="/pengabdian">Kegiatan Masyarakat</a>
+          <a href="/penelitian">Proyek Penelitian</a>
+          <a href="/mata-kuliah">Mata Kuliah</a>
+          <a href="/pengabdian">Pengabdian Masyarakat</a>
         </div>
         <div className="footer-links">
           <h3>Profil Akademik</h3>
-          <a href="/penelitian">Google Scholar</a>
-          <a href="/penelitian">ResearchGate</a>
-          <a href="/penelitian">ACM Digital Library</a>
-          <a href="/#biografi">Halaman Lab MIT</a>
+          <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6007837" target="_blank" rel="noopener noreferrer">SINTA Kemdiktisaintek</a>
+          <a href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+          <a href="https://www.scopus.com/" target="_blank" rel="noopener noreferrer">Scopus</a>
+          <a href="/#biografi">Profil Polinema</a>
         </div>
         <div className="footer-consultation">
-          <h3>Konsultasi Mingguan</h3>
+          <h3>Konsultasi Akademik</h3>
           <div>
-            <strong>Selasa & Kamis</strong>
-            <b>14:00 - 16:00 ET</b>
-            <p>Pesan konsultasi video atau jadwal untuk tinjauan tatap muka.</p>
+            <strong>Senin & Rabu</strong>
+            <b>09:00 - 15:00 WIB</b>
+            <p>Silakan hubungi melalui email untuk penjadwalan bimbingan atau konsultasi riset.</p>
           </div>
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© 2026 Prof. Mohammad Noor Hidayat. Hak Cipta Dilindungi.</p>
+        <p>© 2026 Prof. Ir. Mohammad Noor Hidayat, S.T., M.Sc., Ph.D. Hak Cipta Dilindungi.</p>
         <p>
-          Institut Teknologi Metropolitan adalah institusi pendidikan dengan
-          kesempatan yang setara.
+          Politeknik Negeri Malang adalah institusi pendidikan vokasi yang berkomitmen pada keunggulan akademik.
         </p>
       </div>
     </footer>

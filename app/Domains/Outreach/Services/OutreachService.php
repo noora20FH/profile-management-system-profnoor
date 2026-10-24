@@ -50,7 +50,7 @@ class OutreachService
         return [
             "eyebrow"       => "DAMPAK SOSIAL",
             "title"         => "Pengabdian Masyarakat",
-            "description"   => "Menjembatani arsitektur teknis sistem terdistribusi dengan pemberdayaan masyarakat regional. Menggali penerapan praktis jaringan komputasi untuk menjamin kesetaraan ekologis, pertanian, dan pendidikan.",
+            "description"   => "Menerjemahkan keilmuan energi terbarukan menjadi aksi nyata bagi masyarakat. Pengabdian berfokus pada penyediaan solusi kemandirian energi di daerah tertinggal, pemberdayaan komunitas (seperti pesantren dan UMKM), serta kontribusi aktif dalam penjaminan mutu pendidikan tinggi melalui asesmen akreditasi nasional.",
             "allLabel"      => "Semua Program",
             "previousLabel" => "Pengabdian Sebelumnya",
             "filterLabel"   => "Filter berdasarkan Tahun:",

@@ -53,7 +53,7 @@ class CourseService
         return [
             "eyebrow"       => "PENAWARAN AKADEMIK",
             "title"         => "Pengajaran",
-            "description"   => "Jelajahi mata kuliah sistem terdistribusi, pembelajaran mesin, dan komputasi modern yang tersedia pada tahun akademik berjalan.",
+            "description"   => "Eksplorasi mata kuliah inti di bidang Teknik Elektro dan Energi Terbarukan. Kurikulum dirancang untuk membekali mahasiswa dengan pemahaman mendalam tentang sistem tenaga listrik, konversi energi, proteksi, serta otomasi dan monitoring cerdas yang relevan dengan kebutuhan industri saat ini.",
             "allLabel"      => "Semua Mata Kuliah",
             "previousLabel" => "Mata Kuliah Sebelumnya",
             "filterLabel"   => "Filter berdasarkan Tahun:",

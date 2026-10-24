@@ -8,7 +8,7 @@ export const researchPageConfig = {
   title: "Portofolio Penelitian",
 
   description:
-    "Hibah aktif, makalah fundamental, dan rekayasa sistem terapan berskala global.",
+    "Berfokus pada riset terapan dan fundamental di bidang energi terbarukan, sistem tenaga listrik, dan manajemen energi. Penelitian yang dijalankan tidak hanya bersifat teoretis, tetapi juga menghasilkan inovasi teknologi tepat guna, mulai dari pengembangan pembangkit listrik hingga sistem monitoring berbasis IoT.",
 
   allLabel: "Semua Penelitian",
 

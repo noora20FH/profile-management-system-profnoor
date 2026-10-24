@@ -113,7 +113,7 @@ class PublicationService
             "Publikasi Ilmiah",
 
             "description" =>
-            "Daftar publikasi penelitian",
+            "Dokumentasi jejak ilmiah berupa publikasi jurnal dan prosiding bereputasi internasional, buku referensi, serta kekayaan intelektual (paten dan hak cipta). Semua karya ini didedikasikan untuk kemajuan ilmu ketenagalistrikan dan pengembangan teknologi energi berkelanjutan.",
 
             "allLabel" => "Semua",
 

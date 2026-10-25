@@ -1,4 +1,4 @@
-export type ListingType = "research" | "courses" | "outreach" | "publication";
+export type ListingType = "research" | "courses" | "outreach" | "publication"| "trackrecord";
 
 export type ListingYear = string;
 

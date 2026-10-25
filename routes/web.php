@@ -6,9 +6,10 @@ use App\Domains\Profile\Controllers\ProfileController;
 use App\Domains\Research\Controllers\ResearchController;
 use Illuminate\Support\Facades\Route;
 use App\Domains\Publication\Controllers\PublicationController;
+use App\Domains\TrackRecord\Controllers\TrackRecordController;
 
 Route::get("/", ProfileController::class)->name("home");
-
+Route::get("/rekam-jejak", [TrackRecordController::class, "index"])->name("track-record.index");
 Route::get("/penelitian", [ResearchController::class, "index"])->name(
     "research.index",
 );

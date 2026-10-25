@@ -16,6 +16,12 @@ export default function Navbar({ active }: NavbarProps) {
       </a>
       <nav className="primary-nav" aria-label="Navigasi utama">
         <a href="/#biografi">Biografi</a>
+        <a
+          href="/rekam-jejak"
+          className={active === "trackrecord" ? "active" : ""}
+        >
+          Rekam Jejak
+        </a>
         <a className={active === "courses" ? "active" : ""} href="/mata-kuliah">
           Pengajaran
         </a>
@@ -53,6 +59,7 @@ export default function Navbar({ active }: NavbarProps) {
         <a href="/#biografi" onClick={() => setMenuOpen(false)}>
           Biografi
         </a>
+
         <a
           className={active === "courses" ? "active" : ""}
           href="/mata-kuliah"
@@ -67,7 +74,13 @@ export default function Navbar({ active }: NavbarProps) {
         >
           Penelitian
         </a>
-        
+        <a
+          href="/rekam-jejak"
+          className={active === "trackrecord" ? "active" : ""}
+          onClick={() => setMenuOpen(false)}
+        >
+          Rekam Jejak
+        </a>
         <a
           className={active === "outreach" ? "active" : ""}
           href="/pengabdian"

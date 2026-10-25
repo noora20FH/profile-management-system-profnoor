@@ -25,8 +25,9 @@ export default function Footer({ logo = assetPath("0c1a8.svg") }: FooterProps) {
           <h3>Navigasi</h3>
           <a href="/#biografi">Biografi Dosen</a>
           <a href="/penelitian">Proyek Penelitian</a>
-          <a href="/mata-kuliah">Mata Kuliah</a>
+          <a href="/mata-kuliah">Pengajaran</a>
           <a href="/pengabdian">Pengabdian Masyarakat</a>
+          <a href="/rekam-jejak">Rekam Jejak</a>
         </div>
         <div className="footer-links">
           <h3>Profil Akademik</h3>

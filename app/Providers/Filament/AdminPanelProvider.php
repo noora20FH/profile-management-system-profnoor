@@ -26,6 +26,7 @@ class AdminPanelProvider extends PanelProvider
             ->id("admin")
             ->path("admin")
             ->login()
+            ->passwordReset()
             ->brandName("Academic Profile CMS")
             ->colors([
                 "primary" => Color::Emerald,

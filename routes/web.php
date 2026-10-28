@@ -13,10 +13,7 @@ Route::get("/rekam-jejak", [TrackRecordController::class, "index"])->name("track
 Route::get("/penelitian", [ResearchController::class, "index"])->name(
     "research.index",
 );
-Route::get("/penelitian/{researchProject:slug}", [
-    ResearchController::class,
-    "show",
-])->name("research.show");
+
 Route::get("/mata-kuliah", [CourseController::class, "index"])->name(
     "courses.index",
 );

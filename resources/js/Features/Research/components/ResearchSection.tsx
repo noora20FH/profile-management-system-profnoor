@@ -14,7 +14,7 @@ export default function ResearchSection() {
         light
       />
       <ResearchList projects={featuredProjects} config={page} />
-      <a className="button button--dark section-cta" href="/penelitian">
+      <a className="button button--dark section-cta" href="/penelitian">  
         {page.landing.ctaLabel}
       </a>
     </section>

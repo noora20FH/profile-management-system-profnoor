@@ -25,7 +25,7 @@ class ProfileSeeder extends Seeder
                 'hero_description' => 'Merintis sistem AI terdistribusi, kerangka komputasi edge terfederasi yang aman, dan solusi jaringan tangguh berskala global. Berdedikasi untuk mendidik generasi penerus akademisi komputasi dan mengubah teknologi mentah menjadi manfaat bagi komunitas global.',
                 'hero_photo_path'  => 'assets/2e406.png',
                 'hero_cta_primary_label'   => 'Lihat Daftar Penelitian',
-                'hero_cta_primary_url'     => '/Penelitian',
+                'hero_cta_primary_url'     => '/penelitian',
                 'hero_cta_secondary_label' => 'Hubungi Saya',
                 'hero_metrics' => [
                     [

@@ -32,6 +32,7 @@ Handbook ini menjawab **dua pertanyaan utama**:
 2. **"Data dari database sampai tampil di layar lewat file apa saja?"**
 
 Yang **tidak** dibahas di sini (bisa menyusul):
+
 - Filosofi Domain Driven Design
 - Konfigurasi deployment
 - Setup lokal dari nol
@@ -105,10 +106,10 @@ database/migrations/create_{domain}_table.php
 
 ### File backend yang jarang dibuka (tapi tetap ada)
 
-| File | Kapan dibuka |
-|---|---|
-| `app/Domains/{Domain}/Actions/*` | Saat ada logic "upsert" / "create dari admin panel" |
-| `app/Domains/{Domain}/Requests/*` | Saat ada bug validasi form submit |
+| File                               | Kapan dibuka                                                              |
+| ---------------------------------- | ------------------------------------------------------------------------- |
+| `app/Domains/{Domain}/Actions/*`   | Saat ada logic "upsert" / "create dari admin panel"                       |
+| `app/Domains/{Domain}/Requests/*`  | Saat ada bug validasi form submit                                         |
 | `app/Domains/{Domain}/Resources/*` | **Di project ini umumnya tidak dipakai** — transform dilakukan di Service |
 
 ---
@@ -144,14 +145,14 @@ resources/js/Components/UI/Card.tsx
 
 ### File frontend pendukung
 
-| File | Fungsi |
-|---|---|
-| `resources/js/hooks/useCourses.ts` | Baca props Inertia `courses` (fallback `page`) |
-| `resources/js/hooks/useResearch.ts` | Baca props Inertia `research` |
-| `resources/js/hooks/useOutreach.ts` | Baca props Inertia `outreach` |
-| `resources/js/hooks/useListingPage.ts` | Untuk halaman individual (`/mata-kuliah`, dll) |
-| `resources/js/types/common.ts` | `ListingItem`, `ListingPageData`, `ListingType` |
-| `resources/css/app.css` | Semua style `.listing-card`, `.courses`, `.green-section` |
+| File                                   | Fungsi                                                    |
+| -------------------------------------- | --------------------------------------------------------- |
+| `resources/js/hooks/useCourses.ts`     | Baca props Inertia `courses` (fallback `page`)            |
+| `resources/js/hooks/useResearch.ts`    | Baca props Inertia `research`                             |
+| `resources/js/hooks/useOutreach.ts`    | Baca props Inertia `outreach`                             |
+| `resources/js/hooks/useListingPage.ts` | Untuk halaman individual (`/mata-kuliah`, dll)            |
+| `resources/js/types/common.ts`         | `ListingItem`, `ListingPageData`, `ListingType`           |
+| `resources/css/app.css`                | Semua style `.listing-card`, `.courses`, `.green-section` |
 
 ---
 
@@ -159,17 +160,17 @@ resources/js/Components/UI/Card.tsx
 
 **Tabel paling penting untuk troubleshooting.** Kalau ada field baru atau bug data, **selalu cek pasangannya**.
 
-| Backend | Frontend | Field yang dipertukarkan |
-|---|---|---|
-| `CourseService::homepageData()` | `CourseSection.tsx` → `useCourses()` | `items[].code`, `.term`, `.syllabus_url` |
-| `CourseService::pageData()` | `CoursesPage.tsx` → `useListingPage('courses')` | sama + `description`, `year` |
-| `ResearchService::homepageData()` | `ResearchSection.tsx` → `useResearch()` | `items[].publication_url`, `.meta` |
-| `ResearchService::pageData()` | `ResearchPage.tsx` | sama |
-| `OutreachService::homepageData()` | `OutreachSection.tsx` → `useOutreach()` | `items[].impact_url`, `.video_url`, `.category` |
-| `OutreachService::pageData()` | `OutreachPage.tsx` | sama |
-| `PublicationService::homepageData()` | (belum ada section khusus) | `items[].url`, `.type_label` |
-| `ProfileService::current()` | `Hero.tsx`, `Biography.tsx` | `name`, `title`, `hero_description`, `photo_path` |
-| `ProfileService::metrics()` | `Biography.tsx` (metrics) | `value`, `label`, `detail` |
+| Backend                              | Frontend                                        | Field yang dipertukarkan                          |
+| ------------------------------------ | ----------------------------------------------- | ------------------------------------------------- |
+| `CourseService::homepageData()`      | `CourseSection.tsx` → `useCourses()`            | `items[].code`, `.term`, `.syllabus_url`          |
+| `CourseService::pageData()`          | `CoursesPage.tsx` → `useListingPage('courses')` | sama + `description`, `year`                      |
+| `ResearchService::homepageData()`    | `ResearchSection.tsx` → `useResearch()`         | `items[].publication_url`, `.meta`                |
+| `ResearchService::pageData()`        | `ResearchPage.tsx`                              | sama                                              |
+| `OutreachService::homepageData()`    | `OutreachSection.tsx` → `useOutreach()`         | `items[].impact_url`, `.video_url`, `.category`   |
+| `OutreachService::pageData()`        | `OutreachPage.tsx`                              | sama                                              |
+| `PublicationService::homepageData()` | (belum ada section khusus)                      | `items[].url`, `.type_label`                      |
+| `ProfileService::current()`          | `Hero.tsx`, `Biography.tsx`                     | `name`, `title`, `hero_description`, `photo_path` |
+| `ProfileService::metrics()`          | `Biography.tsx` (metrics)                       | `value`, `label`, `detail`                        |
 
 ---
 
@@ -345,21 +346,21 @@ resources/js/Pages/HomePage.tsx           ← tambah <BookSection />
 
 ## 9. Peta Cepat: "Mau Ubah X, Buka File Mana?"
 
-| Mau ubah | Buka file |
-|---|---|
-| Jumlah item unggulan homepage | `ProfileController.php` → argumen `homepageData(N)` |
-| Urutan item homepage | Filament admin → `sort_order` |
-| Query data (filter / order) | `app/Domains/{Domain}/Services/{Domain}Service.php` |
-| Label / CTA section | `{Domain}Service.php` → array `'landing'` |
-| Warna card | `resources/css/app.css` → `.listing-card` |
-| Susunan elemen card | `resources/js/Components/UI/ListingCard.tsx` |
+| Mau ubah                          | Buka file                                            |
+| --------------------------------- | ---------------------------------------------------- |
+| Jumlah item unggulan homepage     | `ProfileController.php` → argumen `homepageData(N)`  |
+| Urutan item homepage              | Filament admin → `sort_order`                        |
+| Query data (filter / order)       | `app/Domains/{Domain}/Services/{Domain}Service.php`  |
+| Label / CTA section               | `{Domain}Service.php` → array `'landing'`            |
+| Warna card                        | `resources/css/app.css` → `.listing-card`            |
+| Susunan elemen card               | `resources/js/Components/UI/ListingCard.tsx`         |
 | Data apa saja yang muncul di card | `ListingCard.tsx` + `{Domain}Card.tsx` + `common.ts` |
-| Struktur halaman individual | `resources/js/Layouts/FeaturePageLayout.tsx` |
-| Header / Navbar | `resources/js/Layouts/Navbar.tsx` |
-| Footer (email, telepon) | `resources/js/Layouts/Footer.tsx` |
-| Hook ambil props Inertia | `resources/js/hooks/use{Domain}.ts` |
-| Type shared | `resources/js/types/common.ts` |
-| Route baru | `routes/web.php` |
+| Struktur halaman individual       | `resources/js/Layouts/FeaturePageLayout.tsx`         |
+| Header / Navbar                   | `resources/js/Layouts/Navbar.tsx`                    |
+| Footer (email, telepon)           | `resources/js/Layouts/Footer.tsx`                    |
+| Hook ambil props Inertia          | `resources/js/hooks/use{Domain}.ts`                  |
+| Type shared                       | `resources/js/types/common.ts`                       |
+| Route baru                        | `routes/web.php`                                     |
 
 ---
 
@@ -406,16 +407,16 @@ resources/js/
 
 ## 11. Konvensi Penamaan
 
-| Konteks | Aturan | Contoh |
-|---|---|---|
-| Domain backend | Singular PascalCase | `Course`, `Research`, `Outreach` |
-| Folder fitur frontend | Singular PascalCase | `Course`, `Research`, `Outreach` |
-| Komponen React | PascalCase | `CourseSection.tsx` |
-| Hook | camelCase, prefix `use` | `useCourses.ts` |
-| Service method | camelCase | `homepageData()`, `pageData()` |
-| CSS class | kebab-case, BEM-like | `.listing-card-body` |
-| Route | kebab-case Indonesia | `/mata-kuliah`, `/penelitian` |
-| DB column | snake_case | `is_published`, `is_featured`, `sort_order` |
+| Konteks               | Aturan                  | Contoh                                      |
+| --------------------- | ----------------------- | ------------------------------------------- |
+| Domain backend        | Singular PascalCase     | `Course`, `Research`, `Outreach`            |
+| Folder fitur frontend | Singular PascalCase     | `Course`, `Research`, `Outreach`            |
+| Komponen React        | PascalCase              | `CourseSection.tsx`                         |
+| Hook                  | camelCase, prefix `use` | `useCourses.ts`                             |
+| Service method        | camelCase               | `homepageData()`, `pageData()`              |
+| CSS class             | kebab-case, BEM-like    | `.listing-card-body`                        |
+| Route                 | kebab-case Indonesia    | `/mata-kuliah`, `/penelitian`               |
+| DB column             | snake_case              | `is_published`, `is_featured`, `sort_order` |
 
 ---
 
@@ -437,15 +438,15 @@ resources/js/
 
 ## 13. Test Manual Wajib
 
-| # | Skenario | Ekspektasi |
-|---|---|---|
-| 1 | Buka `/` | Muncul 3 course, 3 research, 2 outreach unggulan |
-| 2 | Buka `/mata-kuliah` | Muncul SEMUA course, filter tahun berfungsi |
-| 3 | Set `is_featured = false` untuk semua course | Homepage course section kosong (bukan tampil semua) |
-| 4 | Klik "Hubungi Saya" di Hero | Scroll ke Footer, bukan buka mail client |
-| 5 | Inspect `<h2>` / `<h3>` di card homepage | Teks berwarna putih |
-| 6 | Zoom browser 200% | Layout tetap responsif |
-| 7 | Buka `/penelitian` setelah ubah CSS homepage | Halaman individual TIDAK rusak |
+| #   | Skenario                                     | Ekspektasi                                          |
+| --- | -------------------------------------------- | --------------------------------------------------- |
+| 1   | Buka `/`                                     | Muncul 3 course, 3 research, 2 outreach unggulan    |
+| 2   | Buka `/mata-kuliah`                          | Muncul SEMUA course, filter tahun berfungsi         |
+| 3   | Set `is_featured = false` untuk semua course | Homepage course section kosong (bukan tampil semua) |
+| 4   | Klik "Hubungi Saya" di Hero                  | Scroll ke Footer, bukan buka mail client            |
+| 5   | Inspect `<h2>` / `<h3>` di card homepage     | Teks berwarna putih                                 |
+| 6   | Zoom browser 200%                            | Layout tetap responsif                              |
+| 7   | Buka `/penelitian` setelah ubah CSS homepage | Halaman individual TIDAK rusak                      |
 
 ---
 

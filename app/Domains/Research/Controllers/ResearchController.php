@@ -16,13 +16,5 @@ class ResearchController
         ]);
     }
 
-    public function show(
-        ResearchProject $researchProject,
-        ResearchService $research,
-    ): Response {
-        return Inertia::render("ResearchDetailPage", [
-            "page" => $research->pageData(),
-            "project" => $researchProject,
-        ]);
-    }
+
 }

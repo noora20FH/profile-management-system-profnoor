@@ -273,8 +273,8 @@ Research module manages:
 
 Routes:
 
-    GET /Penelitian
-    GET /Penelitian/{slug}
+    GET /penelitian
+    GET /penelitian/{slug}
 
 Components:
 

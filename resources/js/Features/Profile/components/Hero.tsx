@@ -36,7 +36,6 @@ export default function Hero() {
 
   const ctaPrimaryLabel =
     profile?.hero_cta_primary_label ?? "Lihat Daftar Penelitian";
-  const ctaPrimaryUrl = profile?.hero_cta_primary_url ?? "/Penelitian";
   const ctaSecondaryLabel = profile?.hero_cta_secondary_label ?? "Hubungi Saya";
 
   const email = profile?.email ?? "moh.noor@polinema.ac.id";
@@ -67,7 +66,7 @@ export default function Hero() {
             </div>
 
             <div className="button-row">
-              <a className="button button--primary" href={ctaPrimaryUrl}>
+              <a className="button button--primary" href="/penelitian">
                 {ctaPrimaryLabel}
               </a>
 
@@ -104,7 +103,6 @@ export default function Hero() {
               draggable={false} // Mencegah drag & drop
               onDragStart={(e) => e.preventDefault()}
               style={{ pointerEvents: "none" }} // Mematikan interaksi mouse langsung ke gambar
-              
             />
           </div>
         </main>

@@ -1,4 +1,4 @@
-
+import "./commands"; 
 Cypress.Commands.add("inertiaProps", () => {
   return cy
     .get("#app")

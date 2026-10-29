@@ -1,37 +1,54 @@
 /// <reference types="cypress" />
-// ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+export {};
+
+// cypress/support/commands.ts
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      loginAdmin(email?: string, password?: string): Chainable<void>;
+    }
+  }
+}
+Cypress.Commands.add("loginAdmin", (email?: string, password?: string) => {
+  // Gunakan cy.env() untuk mengambil nilai sensitif saat dibutuhkan
+  cy.env(["ADMIN_EMAIL", "ADMIN_PASSWORD"]).then((envVars) => {
+    const emailToUse = email || envVars.ADMIN_EMAIL;
+    const passwordToUse = password || envVars.ADMIN_PASSWORD;
+
+    if (!emailToUse || !passwordToUse) {
+      throw new Error(
+        "Kredensial admin tidak ditemukan di environment variables.",
+      );
+    }
+
+    cy.session(
+      [emailToUse, passwordToUse],
+      () => {
+        cy.visit("/admin/login", { timeout: 60000 });
+
+        cy.get("#form\\.email", { timeout: 60000 })
+          .should("be.visible")
+          .clear()
+          .type(emailToUse, { log: false });
+
+        cy.get("#form\\.password", { timeout: 60000 })
+          .should("be.visible")
+          .clear()
+          .type(passwordToUse, { log: false });
+
+        cy.get('button[type="submit"]', { timeout: 60000 })
+          .should("be.visible")
+          .and("not.be.disabled")
+          .click();
+
+        cy.location("pathname", { timeout: 60000 }).should(
+          "not.match",
+          /\/admin\/login\/?$/,
+        );
+      },
+      {
+        cacheAcrossSpecs: true,
+      },
+    );
+  });
+});
